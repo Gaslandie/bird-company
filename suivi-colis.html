@@ -1,0 +1,1599 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Suivi de colis Bird Company - Suivez vos envois entre la France, la Guinée et l'international." />
+  <title>Suivi de colis | Bird Company</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --bird-red: #d71920;
+      --bird-yellow: #f7c600;
+      --bird-green: #00843d;
+      --bird-dark: #17202a;
+      --bird-muted: #6b7280;
+      --bird-light: #f7f8fa;
+      --bird-border: #e8eaef;
+      --bird-white: #ffffff;
+      --shadow-soft: 0 18px 45px rgba(23, 32, 42, 0.08);
+      --shadow-card: 0 14px 35px rgba(23, 32, 42, 0.07);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--bird-dark);
+      background: var(--bird-white);
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .section-padding {
+      padding: 90px 0;
+    }
+
+    .section-title {
+      max-width: 760px;
+      margin: 0 auto 50px;
+      text-align: center;
+    }
+
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      margin-bottom: 14px;
+      border-radius: 999px;
+      background: rgba(0, 132, 61, 0.08);
+      color: var(--bird-green);
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.02em;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin-bottom: 16px;
+    }
+
+    .section-title p {
+      color: var(--bird-muted);
+      font-size: 1.06rem;
+      margin: 0;
+    }
+
+    .btn-bird-primary {
+      background: var(--bird-red);
+      color: #fff;
+      border: 1px solid var(--bird-red);
+      border-radius: 999px;
+      padding: 12px 22px;
+      font-weight: 700;
+      transition: var(--transition);
+      box-shadow: 0 12px 28px rgba(215, 25, 32, 0.18);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-bird-primary:hover {
+      background: #b9151b;
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px rgba(215, 25, 32, 0.24);
+    }
+
+    .btn-bird-secondary {
+      background: #fff;
+      color: var(--bird-dark);
+      border: 1px solid var(--bird-border);
+      border-radius: 999px;
+      padding: 12px 22px;
+      font-weight: 700;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-bird-secondary:hover {
+      border-color: var(--bird-green);
+      color: var(--bird-green);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .btn-whatsapp {
+      background: var(--bird-green);
+      color: #fff;
+      border-radius: 999px;
+      padding: 13px 22px;
+      font-weight: 700;
+      transition: var(--transition);
+      border: 1px solid var(--bird-green);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-whatsapp:hover {
+      background: #006f33;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* Topbar */
+    .topbar {
+      background: #fff;
+      border-bottom: 1px solid var(--bird-border);
+      font-size: 0.88rem;
+      color: var(--bird-muted);
+    }
+
+    .topbar .topbar-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      white-space: nowrap;
+    }
+
+    .topbar i {
+      color: var(--bird-red);
+    }
+
+    .topbar-social a {
+      width: 30px;
+      height: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--bird-light);
+      color: var(--bird-dark);
+      transition: var(--transition);
+    }
+
+    .topbar-social a:hover {
+      background: var(--bird-green);
+      color: #fff;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(232, 234, 239, 0.8);
+      transition: var(--transition);
+      z-index: 1030;
+    }
+
+    .navbar.scrolled {
+      box-shadow: 0 12px 34px rgba(23, 32, 42, 0.08);
+    }
+
+    .navbar .container {
+      gap: 18px;
+    }
+
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 15px;
+      background:
+        linear-gradient(135deg, var(--bird-red) 0 33%, var(--bird-yellow) 33% 66%, var(--bird-green) 66% 100%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 900;
+      box-shadow: 0 12px 28px rgba(0, 132, 61, 0.15);
+      flex-shrink: 0;
+    }
+
+    .navbar-brand {
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: var(--bird-dark);
+      flex-shrink: 0;
+      margin-right: 0;
+    }
+
+    .navbar-brand small {
+      display: block;
+      color: var(--bird-muted);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0;
+      margin-top: -2px;
+    }
+
+    .navbar-collapse {
+      min-width: 0;
+    }
+
+    .navbar-nav {
+      align-items: center;
+      gap: 2px;
+    }
+
+    .navbar-nav .nav-link {
+      color: var(--bird-dark);
+      font-weight: 650;
+      font-size: 0.88rem;
+      padding: 8px 9px;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: var(--bird-red);
+    }
+
+    .navbar-actions {
+      flex-shrink: 0;
+    }
+
+    .navbar-actions .btn {
+      white-space: nowrap;
+    }
+
+    .navbar-actions .btn-bird-secondary {
+      display: none;
+    }
+
+    .navbar-toggler {
+      border: 1px solid var(--bird-border);
+      border-radius: 12px;
+      padding: 8px 10px;
+    }
+
+    .navbar-toggler:focus {
+      box-shadow: none;
+    }
+
+    .dropdown-menu {
+      border: 1px solid var(--bird-border);
+      border-radius: 18px;
+      padding: 10px;
+    }
+
+    .dropdown-item {
+      border-radius: 12px;
+      font-weight: 650;
+      padding: 10px 14px;
+      color: var(--bird-dark);
+    }
+
+    .dropdown-item:hover {
+      background: var(--bird-light);
+      color: var(--bird-red);
+    }
+
+    @media (max-width: 1199px) {
+      .navbar-nav {
+        align-items: flex-start;
+        gap: 4px;
+        margin-top: 16px;
+      }
+
+      .navbar-nav .nav-link {
+        padding: 10px 0;
+        font-size: 0.95rem;
+      }
+
+      .navbar-actions {
+        margin-top: 16px;
+      }
+
+      .navbar-actions .btn-bird-secondary {
+        display: inline-flex;
+      }
+    }
+
+    /* Hero tracking */
+    .tracking-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 92px 0 120px;
+      background:
+        radial-gradient(circle at top left, rgba(247, 198, 0, 0.18), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(0, 132, 61, 0.12), transparent 30%),
+        linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    }
+
+    .tracking-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(23, 32, 42, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(23, 32, 42, 0.035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, black, transparent 86%);
+      pointer-events: none;
+    }
+
+    .tracking-hero .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .breadcrumb-soft {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 15px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--bird-border);
+      color: var(--bird-muted);
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 22px;
+      box-shadow: 0 10px 28px rgba(23, 32, 42, 0.05);
+    }
+
+    .breadcrumb-soft a {
+      color: var(--bird-green);
+    }
+
+    .tracking-hero h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 0.98;
+      letter-spacing: -0.065em;
+      font-weight: 900;
+      margin-bottom: 22px;
+    }
+
+    .tracking-hero h1 .accent {
+      position: relative;
+      display: inline-block;
+    }
+
+    .tracking-hero h1 .accent::after {
+      content: "";
+      position: absolute;
+      left: 4px;
+      right: 4px;
+      bottom: 5px;
+      height: 13px;
+      background: rgba(247, 198, 0, 0.55);
+      z-index: -1;
+      border-radius: 999px;
+    }
+
+    .tracking-hero p {
+      max-width: 660px;
+      color: var(--bird-muted);
+      font-size: 1.13rem;
+      line-height: 1.75;
+      margin-bottom: 0;
+    }
+
+    .tracking-visual {
+      min-height: 420px;
+      border-radius: var(--radius-lg);
+      background: #fff;
+      border: 1px solid var(--bird-border);
+      box-shadow: var(--shadow-soft);
+      padding: 26px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .tracking-visual::before {
+      content: "";
+      position: absolute;
+      right: -70px;
+      top: -70px;
+      width: 210px;
+      height: 210px;
+      border-radius: 50%;
+      background: rgba(247, 198, 0, 0.26);
+    }
+
+    .tracking-visual::after {
+      content: "";
+      position: absolute;
+      left: -80px;
+      bottom: -80px;
+      width: 230px;
+      height: 230px;
+      border-radius: 50%;
+      background: rgba(0, 132, 61, 0.09);
+    }
+
+    .package-card {
+      position: relative;
+      z-index: 2;
+      border-radius: 24px;
+      border: 1px solid var(--bird-border);
+      background: var(--bird-light);
+      padding: 22px;
+      margin-bottom: 18px;
+    }
+
+    .package-card-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      background: #fff;
+      color: var(--bird-red);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      box-shadow: 0 10px 24px rgba(23, 32, 42, 0.08);
+      flex-shrink: 0;
+    }
+
+    .mini-map {
+      position: relative;
+      z-index: 2;
+      border-radius: 24px;
+      border: 1px solid var(--bird-border);
+      background:
+        linear-gradient(135deg, rgba(215, 25, 32, 0.06), rgba(247, 198, 0, 0.12), rgba(0, 132, 61, 0.06)),
+        #fff;
+      padding: 22px;
+    }
+
+    .mini-map-line {
+      position: relative;
+      height: 8px;
+      margin: 26px 0;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--bird-red), var(--bird-yellow), var(--bird-green));
+      overflow: hidden;
+    }
+
+    .mini-map-line::after {
+      content: "";
+      position: absolute;
+      top: -8px;
+      left: 54%;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #fff;
+      border: 7px solid var(--bird-green);
+      animation: pulseDot 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.14); }
+    }
+
+    /* Tracking search card */
+    .tracking-search-wrapper {
+      margin-top: -70px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .tracking-search-card {
+      border-radius: 30px;
+      background: #fff;
+      border: 1px solid var(--bird-border);
+      box-shadow: var(--shadow-soft);
+      padding: 28px;
+    }
+
+    .tracking-search-card h2 {
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+    }
+
+    .tracking-search-card p {
+      color: var(--bird-muted);
+      margin-bottom: 0;
+    }
+
+    .tracking-form .form-control {
+      height: 58px;
+      border-radius: 999px;
+      border: 1px solid var(--bird-border);
+      padding-left: 22px;
+      font-weight: 700;
+    }
+
+    .tracking-form .form-control:focus {
+      border-color: var(--bird-green);
+      box-shadow: 0 0 0 0.22rem rgba(0, 132, 61, 0.12);
+    }
+
+    .tracking-example {
+      color: var(--bird-muted);
+      font-size: 0.9rem;
+      margin-top: 12px;
+    }
+
+    /* Result */
+    .result-card,
+    .info-card,
+    .faq-card,
+    .help-card {
+      height: 100%;
+      background: #fff;
+      border: 1px solid var(--bird-border);
+      border-radius: 26px;
+      padding: 26px;
+      box-shadow: 0 8px 24px rgba(23, 32, 42, 0.04);
+      transition: var(--transition);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .result-card:hover,
+    .info-card:hover,
+    .faq-card:hover,
+    .help-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .result-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 22px;
+      margin-bottom: 22px;
+      border-bottom: 1px solid var(--bird-border);
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: rgba(0, 132, 61, 0.08);
+      color: var(--bird-green);
+      font-weight: 800;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    .status-pill::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--bird-green);
+      box-shadow: 0 0 0 6px rgba(0, 132, 61, 0.12);
+    }
+
+    .result-meta {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .meta-item {
+      border-radius: 18px;
+      background: var(--bird-light);
+      padding: 16px;
+    }
+
+    .meta-item span {
+      display: block;
+      color: var(--bird-muted);
+      font-size: 0.86rem;
+      font-weight: 650;
+      margin-bottom: 4px;
+    }
+
+    .meta-item strong {
+      display: block;
+      color: var(--bird-dark);
+      font-weight: 850;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 0;
+    }
+
+    .timeline-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 16px;
+      padding-bottom: 24px;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 20px;
+      top: 42px;
+      bottom: 0;
+      width: 2px;
+      background: var(--bird-border);
+    }
+
+    .timeline-item:last-child::before {
+      display: none;
+    }
+
+    .timeline-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bird-light);
+      border: 1px solid var(--bird-border);
+      color: var(--bird-muted);
+      position: relative;
+      z-index: 2;
+    }
+
+    .timeline-item.done .timeline-icon {
+      background: var(--bird-green);
+      color: #fff;
+      border-color: var(--bird-green);
+    }
+
+    .timeline-item.current .timeline-icon {
+      background: var(--bird-yellow);
+      color: var(--bird-dark);
+      border-color: var(--bird-yellow);
+      box-shadow: 0 0 0 7px rgba(247, 198, 0, 0.18);
+    }
+
+    .timeline-content h3 {
+      font-size: 1.02rem;
+      font-weight: 850;
+      margin-bottom: 5px;
+    }
+
+    .timeline-content p {
+      color: var(--bird-muted);
+      margin-bottom: 4px;
+      line-height: 1.6;
+    }
+
+    .timeline-content small {
+      color: var(--bird-muted);
+      font-weight: 650;
+    }
+
+    .side-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .side-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 13px;
+      padding: 15px;
+      border-radius: 18px;
+      background: var(--bird-light);
+    }
+
+    .side-item i {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      color: var(--bird-red);
+      flex-shrink: 0;
+    }
+
+    .side-item strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .side-item span {
+      color: var(--bird-muted);
+      font-size: 0.92rem;
+    }
+
+    .soft-bg {
+      background: var(--bird-light);
+    }
+
+    .icon-box {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+      background: rgba(215, 25, 32, 0.08);
+      color: var(--bird-red);
+      font-size: 1.45rem;
+      transition: var(--transition);
+    }
+
+    .info-card h3,
+    .faq-card h3,
+    .help-card h3 {
+      font-size: 1.2rem;
+      font-weight: 850;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .info-card p,
+    .faq-card p,
+    .help-card p {
+      color: var(--bird-muted);
+      margin: 0;
+      line-height: 1.72;
+    }
+
+    .process-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px;
+      border-radius: 22px;
+      background: #fff;
+      border: 1px solid var(--bird-border);
+      height: 100%;
+      transition: var(--transition);
+    }
+
+    .process-step:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .process-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--bird-dark);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .process-number::after {
+      content: "";
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      border: 2px solid rgba(247, 198, 0, 0.55);
+    }
+
+    .process-step h3 {
+      font-size: 1.08rem;
+      font-weight: 850;
+      margin-bottom: 6px;
+    }
+
+    .process-step p {
+      color: var(--bird-muted);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* CTA */
+    .cta {
+      background:
+        radial-gradient(circle at top left, rgba(247, 198, 0, 0.25), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(0, 132, 61, 0.2), transparent 30%),
+        linear-gradient(135deg, #171f2a, #263241);
+      color: #fff;
+      border-radius: 34px;
+      padding: 58px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .cta::before {
+      content: "";
+      position: absolute;
+      right: -90px;
+      top: -90px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(215, 25, 32, 0.24);
+    }
+
+    .cta h2 {
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta p {
+      color: rgba(255, 255, 255, 0.76);
+      margin-bottom: 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-actions {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta .btn-bird-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.22);
+    }
+
+    .cta .btn-bird-secondary:hover {
+      background: #fff;
+      color: var(--bird-dark);
+    }
+
+    /* Footer */
+    .footer {
+      background: #111820;
+      color: #fff;
+      padding: 70px 0 24px;
+    }
+
+    .footer p,
+    .footer a,
+    .footer li {
+      color: rgba(255, 255, 255, 0.68);
+    }
+
+    .footer a {
+      transition: var(--transition);
+    }
+
+    .footer a:hover {
+      color: #fff;
+      padding-left: 3px;
+    }
+
+    .footer h3,
+    .footer h4 {
+      font-weight: 850;
+      margin-bottom: 18px;
+    }
+
+    .footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .footer-social a {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+
+    .footer-social a:hover {
+      background: var(--bird-green);
+      padding-left: 0;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 46px;
+      padding-top: 22px;
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 0.92rem;
+    }
+
+    /* Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .zoom-soft {
+      transition: transform 0.45s ease;
+    }
+
+    .zoom-soft:hover {
+      transform: scale(1.025);
+    }
+
+    /* Responsive */
+    @media (max-width: 991px) {
+      .tracking-hero {
+        padding: 72px 0 100px;
+      }
+
+      .tracking-visual {
+        margin-top: 36px;
+        min-height: auto;
+      }
+
+      .section-padding {
+        padding: 72px 0;
+      }
+
+      .cta {
+        padding: 42px 28px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .topbar {
+        display: none;
+      }
+
+      .tracking-hero h1 {
+        letter-spacing: -0.055em;
+      }
+
+      .tracking-search-wrapper {
+        margin-top: -50px;
+      }
+
+      .tracking-search-card {
+        padding: 22px;
+      }
+
+      .tracking-form .btn-bird-primary {
+        width: 100%;
+      }
+
+      .result-header {
+        flex-direction: column;
+      }
+
+      .result-meta {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        text-align: left;
+      }
+
+      .cta-actions {
+        margin-top: 26px;
+      }
+
+      .cta-actions .btn-bird-primary,
+      .cta-actions .btn-bird-secondary,
+      .cta-actions .btn-whatsapp {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 575px) {
+      .tracking-hero {
+        padding: 56px 0 84px;
+      }
+
+      .section-padding {
+        padding: 58px 0;
+      }
+
+      .result-card,
+      .info-card,
+      .faq-card,
+      .help-card {
+        padding: 22px;
+      }
+
+      .cta {
+        border-radius: 26px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Topbar -->
+  <div class="topbar py-2">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center">
+      <div class="d-flex flex-wrap gap-3 align-items-center">
+        <span class="topbar-link"><i class="bi bi-geo-alt-fill"></i>6 rue Maurice Paillard, 93430 Villetaneuse</span>
+        <a href="mailto:birdcompagny93@gmail.com" class="topbar-link"><i class="bi bi-envelope-fill"></i>birdcompagny93@gmail.com</a>
+        <a href="tel:+33753926876" class="topbar-link"><i class="bi bi-telephone-fill"></i>+33 7 53 92 68 76</a>
+      </div>
+
+      <div class="topbar-social d-flex gap-2">
+        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-xl sticky-top py-3">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-3" href="index.html">
+        <span class="brand-mark">B</span>
+        <span>
+          BIRD COMPANY
+          <small>Transport & logistique internationale</small>
+        </span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Ouvrir le menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav mx-auto mt-3 mt-xl-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link active" href="suivi-colis.html">Suivi colis</a></li>
+          <li class="nav-item"><a class="nav-link" href="a-propos.html">À propos</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#reservation">Réservation</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Boutique</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Plus
+            </a>
+            <ul class="dropdown-menu shadow-sm">
+              <li><a class="dropdown-item" href="#">Mes abonnements</a></li>
+              <li><a class="dropdown-item" href="#">Se connecter</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="navbar-actions d-flex flex-wrap gap-2">
+          <a href="#trackingForm" class="btn btn-bird-primary">Suivre mon colis</a>
+          <a href="index.html#reservation" class="btn btn-bird-secondary">Réserver</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <section class="tracking-hero">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6 reveal">
+            <div class="breadcrumb-soft">
+              <a href="index.html">Accueil</a>
+              <i class="bi bi-chevron-right small"></i>
+              <span>Suivi de colis</span>
+            </div>
+
+            <h1>
+              Suivez votre colis en <span class="accent">toute transparence</span>.
+            </h1>
+
+            <p>
+              Entrez votre numéro de suivi Bird Company pour consulter l’état de votre colis, les étapes déjà validées et la prochaine étape de livraison.
+            </p>
+
+            <div class="d-flex flex-wrap gap-3 mt-4">
+              <a href="#trackingForm" class="btn btn-bird-primary">
+                <i class="bi bi-search me-2"></i>Suivre maintenant
+              </a>
+              <a href="https://wa.me/33753926876" class="btn btn-bird-secondary">
+                <i class="bi bi-whatsapp me-2"></i>Besoin d’aide ?
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-6 reveal">
+            <div class="tracking-visual zoom-soft">
+              <div class="package-card d-flex align-items-center gap-3">
+                <div class="package-card-icon">
+                  <i class="bi bi-box-seam"></i>
+                </div>
+                <div>
+                  <h2 class="h5 fw-bold mb-1">Colis en transit</h2>
+                  <p class="text-secondary mb-0">Votre expédition est suivie étape par étape.</p>
+                </div>
+              </div>
+
+              <div class="mini-map">
+                <div class="d-flex justify-content-between align-items-center gap-3">
+                  <div>
+                    <strong class="d-block">France</strong>
+                    <span class="text-secondary">Départ / traitement</span>
+                  </div>
+                  <i class="bi bi-airplane fs-3 text-danger"></i>
+                  <div class="text-end">
+                    <strong class="d-block">Guinée</strong>
+                    <span class="text-secondary">Réception / livraison</span>
+                  </div>
+                </div>
+
+                <div class="mini-map-line"></div>
+
+                <div class="row g-3">
+                  <div class="col-6">
+                    <div class="p-3 rounded-4 bg-white border">
+                      <strong class="d-block">Statut</strong>
+                      <span class="text-secondary">En transit</span>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="p-3 rounded-4 bg-white border">
+                      <strong class="d-block">Suivi</strong>
+                      <span class="text-secondary">Mis à jour</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Tracking form -->
+    <section id="trackingForm" class="tracking-search-wrapper">
+      <div class="container">
+        <div class="tracking-search-card reveal">
+          <div class="row align-items-center g-4">
+            <div class="col-lg-4">
+              <h2>Rechercher un colis</h2>
+              <p>Saisissez le numéro reçu lors du dépôt ou de la réservation.</p>
+            </div>
+
+            <div class="col-lg-8">
+              <form class="tracking-form row g-3" action="#" method="post">
+                <div class="col-md-8">
+                  <label class="visually-hidden" for="trackingNumber">Numéro de suivi</label>
+                  <input type="text" class="form-control" id="trackingNumber" placeholder="Ex : BIRD-2026-0001">
+                  <div class="tracking-example">Exemple de numéro : BIRD-2026-0001</div>
+                </div>
+                <div class="col-md-4">
+                  <button type="submit" class="btn btn-bird-primary w-100 h-100">
+                    <i class="bi bi-search me-2"></i>Suivre
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tracking result -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-title reveal">
+          <span class="section-kicker"><i class="bi bi-activity"></i>Exemple de résultat</span>
+          <h2>Un suivi clair pour rassurer le client.</h2>
+          <p>Ce bloc sert de maquette visuelle. Plus tard, il pourra être connecté à une vraie base de données ou un système de suivi.</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-8 reveal">
+            <div class="result-card">
+              <div class="result-header">
+                <div>
+                  <span class="text-secondary fw-semibold">Numéro de suivi</span>
+                  <h2 class="h3 fw-bold mb-0">BIRD-2026-0001</h2>
+                </div>
+                <span class="status-pill">En transit</span>
+              </div>
+
+              <div class="result-meta">
+                <div class="meta-item">
+                  <span>Départ</span>
+                  <strong>Villetaneuse, France</strong>
+                </div>
+                <div class="meta-item">
+                  <span>Destination</span>
+                  <strong>Conakry, Guinée</strong>
+                </div>
+                <div class="meta-item">
+                  <span>Service</span>
+                  <strong>Fret aérien Cargo</strong>
+                </div>
+                <div class="meta-item">
+                  <span>Délai estimé</span>
+                  <strong>7 à 10 jours</strong>
+                </div>
+              </div>
+
+              <div class="timeline">
+                <div class="timeline-item done">
+                  <div class="timeline-icon"><i class="bi bi-check-lg"></i></div>
+                  <div class="timeline-content">
+                    <h3>Colis enregistré</h3>
+                    <p>Le colis a été enregistré dans le système Bird Company.</p>
+                    <small>Étape validée</small>
+                  </div>
+                </div>
+
+                <div class="timeline-item done">
+                  <div class="timeline-icon"><i class="bi bi-check-lg"></i></div>
+                  <div class="timeline-content">
+                    <h3>Colis reçu par l’équipe</h3>
+                    <p>Le colis a été déposé ou récupéré et préparé pour le traitement.</p>
+                    <small>Étape validée</small>
+                  </div>
+                </div>
+
+                <div class="timeline-item current">
+                  <div class="timeline-icon"><i class="bi bi-arrow-repeat"></i></div>
+                  <div class="timeline-content">
+                    <h3>En transit</h3>
+                    <p>Votre colis est actuellement en cours d’acheminement vers la destination.</p>
+                    <small>Étape en cours</small>
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-icon"><i class="bi bi-geo-alt"></i></div>
+                  <div class="timeline-content">
+                    <h3>Arrivée en Guinée</h3>
+                    <p>Le colis sera traité à l’arrivée avant la remise ou la livraison.</p>
+                    <small>À venir</small>
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-icon"><i class="bi bi-house-check"></i></div>
+                  <div class="timeline-content">
+                    <h3>Livré au destinataire</h3>
+                    <p>Le colis sera marqué comme livré après confirmation.</p>
+                    <small>À venir</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 reveal">
+            <div class="result-card">
+              <h2 class="h4 fw-bold mb-4">Informations utiles</h2>
+
+              <div class="side-list">
+                <div class="side-item">
+                  <i class="bi bi-info-circle"></i>
+                  <div>
+                    <strong>Dernière mise à jour</strong>
+                    <span>Aujourd’hui, 15:30</span>
+                  </div>
+                </div>
+
+                <div class="side-item">
+                  <i class="bi bi-person-check"></i>
+                  <div>
+                    <strong>Destinataire</strong>
+                    <span>Nom affiché uniquement si nécessaire.</span>
+                  </div>
+                </div>
+
+                <div class="side-item">
+                  <i class="bi bi-shield-check"></i>
+                  <div>
+                    <strong>Sécurité</strong>
+                    <span>Le suivi aide à limiter les pertes d’informations.</span>
+                  </div>
+                </div>
+
+                <div class="side-item">
+                  <i class="bi bi-whatsapp"></i>
+                  <div>
+                    <strong>Assistance</strong>
+                    <span>Contactez l’équipe si le statut ne change pas.</span>
+                  </div>
+                </div>
+              </div>
+
+              <a href="https://wa.me/33753926876" class="btn btn-whatsapp w-100 mt-4">
+                <i class="bi bi-whatsapp me-2"></i>Contacter WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="section-padding soft-bg">
+      <div class="container">
+        <div class="section-title reveal">
+          <span class="section-kicker"><i class="bi bi-diagram-3"></i>Étapes de suivi</span>
+          <h2>Chaque colis suit un parcours simple.</h2>
+          <p>Le suivi permet au client de comprendre où se trouve son colis et quelle est la prochaine étape.</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-xl reveal">
+            <div class="process-step">
+              <div class="process-number">1</div>
+              <div>
+                <h3>Enregistré</h3>
+                <p>Le colis est ajouté dans le système avec un numéro de suivi.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-xl reveal">
+            <div class="process-step">
+              <div class="process-number">2</div>
+              <div>
+                <h3>Reçu</h3>
+                <p>L’équipe confirme la réception ou l’enlèvement du colis.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-xl reveal">
+            <div class="process-step">
+              <div class="process-number">3</div>
+              <div>
+                <h3>En transit</h3>
+                <p>Le colis est en route selon le service choisi.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-xl reveal">
+            <div class="process-step">
+              <div class="process-number">4</div>
+              <div>
+                <h3>Arrivé</h3>
+                <p>Le colis est réceptionné dans le pays de destination.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-xl reveal">
+            <div class="process-step">
+              <div class="process-number">5</div>
+              <div>
+                <h3>Livré</h3>
+                <p>Le colis est remis au destinataire final.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Help / FAQ -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-title reveal">
+          <span class="section-kicker"><i class="bi bi-question-circle"></i>Aide</span>
+          <h2>Questions fréquentes sur le suivi.</h2>
+          <p>Quelques réponses utiles pour éviter les confusions pendant le transport.</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4 reveal">
+            <div class="faq-card">
+              <div class="icon-box"><i class="bi bi-upc-scan"></i></div>
+              <h3>Où trouver mon numéro de suivi ?</h3>
+              <p>Il est transmis lors de l’enregistrement du colis, par message ou directement par l’équipe Bird Company.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4 reveal">
+            <div class="faq-card">
+              <div class="icon-box"><i class="bi bi-clock-history"></i></div>
+              <h3>Le statut ne change pas, est-ce normal ?</h3>
+              <p>Oui, certaines étapes peuvent prendre du temps selon le mode de transport, le groupage ou les formalités.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4 reveal">
+            <div class="faq-card">
+              <div class="icon-box"><i class="bi bi-chat-dots"></i></div>
+              <h3>Qui contacter en cas de doute ?</h3>
+              <p>Contactez l’équipe par téléphone, email ou WhatsApp avec votre numéro de suivi.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="pb-5">
+      <div class="container">
+        <div class="cta reveal">
+          <div class="row align-items-center g-4">
+            <div class="col-lg-7">
+              <h2>Vous n’avez pas encore de numéro de suivi ?</h2>
+              <p>Contactez Bird Company pour enregistrer votre colis, demander un devis ou réserver un service d’envoi entre la France et la Guinée.</p>
+            </div>
+            <div class="col-lg-5">
+              <div class="cta-actions d-flex flex-column flex-sm-row flex-lg-column flex-xl-row gap-3 justify-content-lg-end">
+                <a href="https://wa.me/33753926876" class="btn btn-whatsapp">
+                  <i class="bi bi-whatsapp me-2"></i>WhatsApp
+                </a>
+                <a href="index.html#reservation" class="btn btn-bird-secondary">Réserver</a>
+                <a href="index.html#contact" class="btn btn-bird-primary">Demander un devis</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <span class="brand-mark">B</span>
+            <h3 class="mb-0">BIRD COMPANY</h3>
+          </div>
+          <p class="lh-lg">
+            Transport, logistique et envoi de colis entre la Guinée, la France et l’international. Une solution fiable pour les particuliers, professionnels et la diaspora.
+          </p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-2">
+          <h4>Liens rapides</h4>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="suivi-colis.html">Suivi de colis</a></li>
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="index.html#reservation">Réservation</a></li>
+            <li><a href="#">Boutique</a></li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="index.html#services">Fret aérien Cargo</a></li>
+            <li><a href="index.html#services">Fret maritime</a></li>
+            <li><a href="index.html#services">Envoi express</a></li>
+            <li><a href="index.html#services">Enlèvement de colis</a></li>
+            <li><a href="index.html#services">Livraison à domicile</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3">
+          <h4>Contact</h4>
+          <ul>
+            <li>6 rue Maurice Paillard, 93430 Villetaneuse</li>
+            <li><a href="mailto:birdcompagny93@gmail.com">birdcompagny93@gmail.com</a></li>
+            <li><a href="tel:+33753926876">+33 7 53 92 68 76</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom d-flex flex-wrap justify-content-between gap-2">
+        <span>© 2026 Bird Company. Tous droits réservés.</span>
+        <span>Page suivi de colis</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Navbar shadow on scroll
+    const navbar = document.querySelector(".navbar");
+
+    function updateNavbar() {
+      if (window.scrollY > 10) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    }
+
+    updateNavbar();
+    window.addEventListener("scroll", updateNavbar);
+
+    // Reveal animation on scroll
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.14 }
+    );
+
+    revealElements.forEach((element) => revealObserver.observe(element));
+
+    // Mock tracking form behavior
+    const trackingForm = document.querySelector(".tracking-form");
+    const trackingNumber = document.querySelector("#trackingNumber");
+
+    if (trackingForm && trackingNumber) {
+      trackingForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const value = trackingNumber.value.trim();
+
+        if (!value) {
+          trackingNumber.focus();
+          trackingNumber.classList.add("is-invalid");
+          return;
+        }
+
+        trackingNumber.classList.remove("is-invalid");
+        document.querySelector(".result-card")?.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      });
+    }
+  </script>
+</body>
+</html>

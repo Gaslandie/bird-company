@@ -1,0 +1,1526 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="À propos de Bird Company - Transport, logistique et envoi de colis entre la Guinée, la France et l'international." />
+  <title>À propos | Bird Company</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --bird-red: #d71920;
+      --bird-yellow: #f7c600;
+      --bird-green: #00843d;
+      --bird-dark: #17202a;
+      --bird-muted: #6b7280;
+      --bird-light: #f7f8fa;
+      --bird-border: #e8eaef;
+      --bird-white: #ffffff;
+      --shadow-soft: 0 18px 45px rgba(23, 32, 42, 0.08);
+      --shadow-card: 0 14px 35px rgba(23, 32, 42, 0.07);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--bird-dark);
+      background: var(--bird-white);
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .section-padding {
+      padding: 90px 0;
+    }
+
+    .section-title {
+      max-width: 760px;
+      margin: 0 auto 50px;
+      text-align: center;
+    }
+
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      margin-bottom: 14px;
+      border-radius: 999px;
+      background: rgba(0, 132, 61, 0.08);
+      color: var(--bird-green);
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.02em;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin-bottom: 16px;
+    }
+
+    .section-title p {
+      color: var(--bird-muted);
+      font-size: 1.06rem;
+      margin: 0;
+    }
+
+    .btn-bird-primary {
+      background: var(--bird-red);
+      color: #fff;
+      border: 1px solid var(--bird-red);
+      border-radius: 999px;
+      padding: 12px 22px;
+      font-weight: 700;
+      transition: var(--transition);
+      box-shadow: 0 12px 28px rgba(215, 25, 32, 0.18);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-bird-primary:hover {
+      background: #b9151b;
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px rgba(215, 25, 32, 0.24);
+    }
+
+    .btn-bird-secondary {
+      background: #fff;
+      color: var(--bird-dark);
+      border: 1px solid var(--bird-border);
+      border-radius: 999px;
+      padding: 12px 22px;
+      font-weight: 700;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-bird-secondary:hover {
+      border-color: var(--bird-green);
+      color: var(--bird-green);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .btn-whatsapp {
+      background: var(--bird-green);
+      color: #fff;
+      border-radius: 999px;
+      padding: 13px 22px;
+      font-weight: 700;
+      transition: var(--transition);
+      border: 1px solid var(--bird-green);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-whatsapp:hover {
+      background: #006f33;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* Topbar */
+    .topbar {
+      background: #fff;
+      border-bottom: 1px solid var(--bird-border);
+      font-size: 0.88rem;
+      color: var(--bird-muted);
+    }
+
+    .topbar .topbar-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      white-space: nowrap;
+    }
+
+    .topbar i {
+      color: var(--bird-red);
+    }
+
+    .topbar-social a {
+      width: 30px;
+      height: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--bird-light);
+      color: var(--bird-dark);
+      transition: var(--transition);
+    }
+
+    .topbar-social a:hover {
+      background: var(--bird-green);
+      color: #fff;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(232, 234, 239, 0.8);
+      transition: var(--transition);
+      z-index: 1030;
+    }
+
+    .navbar.scrolled {
+      box-shadow: 0 12px 34px rgba(23, 32, 42, 0.08);
+    }
+
+    .navbar .container {
+      gap: 18px;
+    }
+
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 15px;
+      background:
+        linear-gradient(135deg, var(--bird-red) 0 33%, var(--bird-yellow) 33% 66%, var(--bird-green) 66% 100%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 900;
+      box-shadow: 0 12px 28px rgba(0, 132, 61, 0.15);
+      flex-shrink: 0;
+    }
+
+    .navbar-brand {
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: var(--bird-dark);
+      flex-shrink: 0;
+      margin-right: 0;
+    }
+
+    .navbar-brand small {
+      display: block;
+      color: var(--bird-muted);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0;
+      margin-top: -2px;
+    }
+
+    .navbar-collapse {
+      min-width: 0;
+    }
+
+    .navbar-nav {
+      align-items: center;
+      gap: 2px;
+    }
+
+    .navbar-nav .nav-link {
+      color: var(--bird-dark);
+      font-weight: 650;
+      font-size: 0.88rem;
+      padding: 8px 9px;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: var(--bird-red);
+    }
+
+    .navbar-actions {
+      flex-shrink: 0;
+    }
+
+    .navbar-actions .btn {
+      white-space: nowrap;
+    }
+
+    .navbar-actions .btn-bird-secondary {
+      display: none;
+    }
+
+    .navbar-toggler {
+      border: 1px solid var(--bird-border);
+      border-radius: 12px;
+      padding: 8px 10px;
+    }
+
+    .navbar-toggler:focus {
+      box-shadow: none;
+    }
+
+    .dropdown-menu {
+      border: 1px solid var(--bird-border);
+      border-radius: 18px;
+      padding: 10px;
+    }
+
+    .dropdown-item {
+      border-radius: 12px;
+      font-weight: 650;
+      padding: 10px 14px;
+      color: var(--bird-dark);
+    }
+
+    .dropdown-item:hover {
+      background: var(--bird-light);
+      color: var(--bird-red);
+    }
+
+    @media (max-width: 1199px) {
+      .navbar-nav {
+        align-items: flex-start;
+        gap: 4px;
+        margin-top: 16px;
+      }
+
+      .navbar-nav .nav-link {
+        padding: 10px 0;
+        font-size: 0.95rem;
+      }
+
+      .navbar-actions {
+        margin-top: 16px;
+      }
+
+      .navbar-actions .btn-bird-secondary {
+        display: inline-flex;
+      }
+    }
+
+    /* Hero about */
+    .about-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 92px 0 90px;
+      background:
+        radial-gradient(circle at top left, rgba(247, 198, 0, 0.18), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(0, 132, 61, 0.12), transparent 30%),
+        linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    }
+
+    .about-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(23, 32, 42, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(23, 32, 42, 0.035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, black, transparent 86%);
+      pointer-events: none;
+    }
+
+    .about-hero .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .breadcrumb-soft {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 15px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--bird-border);
+      color: var(--bird-muted);
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 22px;
+      box-shadow: 0 10px 28px rgba(23, 32, 42, 0.05);
+    }
+
+    .breadcrumb-soft a {
+      color: var(--bird-green);
+    }
+
+    .about-hero h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 0.98;
+      letter-spacing: -0.065em;
+      font-weight: 900;
+      margin-bottom: 22px;
+    }
+
+    .about-hero h1 .accent {
+      position: relative;
+      display: inline-block;
+    }
+
+    .about-hero h1 .accent::after {
+      content: "";
+      position: absolute;
+      left: 4px;
+      right: 4px;
+      bottom: 5px;
+      height: 13px;
+      background: rgba(247, 198, 0, 0.55);
+      z-index: -1;
+      border-radius: 999px;
+    }
+
+    .about-hero p {
+      max-width: 680px;
+      color: var(--bird-muted);
+      font-size: 1.13rem;
+      line-height: 1.75;
+      margin-bottom: 0;
+    }
+
+    .about-visual {
+      min-height: 430px;
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(247, 248, 250, 0.9)),
+        linear-gradient(135deg, rgba(215, 25, 32, 0.08), rgba(247, 198, 0, 0.16), rgba(0, 132, 61, 0.08));
+      border: 1px solid var(--bird-border);
+      box-shadow: var(--shadow-soft);
+      padding: 26px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .about-visual::before {
+      content: "";
+      position: absolute;
+      right: -70px;
+      top: -70px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(247, 198, 0, 0.28);
+    }
+
+    .about-visual::after {
+      content: "";
+      position: absolute;
+      left: -80px;
+      bottom: -80px;
+      width: 230px;
+      height: 230px;
+      border-radius: 50%;
+      background: rgba(0, 132, 61, 0.1);
+    }
+
+    .vision-map {
+      position: relative;
+      z-index: 2;
+      background: #fff;
+      border: 1px solid var(--bird-border);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .route-line {
+      position: relative;
+      height: 8px;
+      margin: 32px 0;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--bird-red), var(--bird-yellow), var(--bird-green));
+      overflow: hidden;
+    }
+
+    .route-line::after {
+      content: "";
+      position: absolute;
+      top: -8px;
+      left: 58%;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #fff;
+      border: 7px solid var(--bird-green);
+      animation: pulseDot 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.14); }
+    }
+
+    .country-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 16px;
+      border: 1px solid var(--bird-border);
+      border-radius: 18px;
+      background: var(--bird-light);
+    }
+
+    .country-card strong {
+      display: block;
+      font-size: 1.1rem;
+    }
+
+    .country-card span {
+      color: var(--bird-muted);
+      font-size: 0.92rem;
+    }
+
+    .visual-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      color: var(--bird-red);
+      font-size: 1.45rem;
+      flex-shrink: 0;
+      box-shadow: 0 10px 24px rgba(23, 32, 42, 0.08);
+    }
+
+    .hero-stats {
+      position: relative;
+      z-index: 2;
+      margin-top: 18px;
+    }
+
+    .mini-stat {
+      padding: 16px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--bird-border);
+      box-shadow: 0 10px 24px rgba(23, 32, 42, 0.05);
+      height: 100%;
+    }
+
+    .mini-stat strong {
+      display: block;
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: var(--bird-dark);
+    }
+
+    .mini-stat span {
+      color: var(--bird-muted);
+      font-size: 0.88rem;
+      font-weight: 650;
+    }
+
+    .soft-bg {
+      background: var(--bird-light);
+    }
+
+    .story-card,
+    .value-card,
+    .mission-card,
+    .team-card,
+    .location-card,
+    .timeline-card {
+      height: 100%;
+      background: #fff;
+      border: 1px solid var(--bird-border);
+      border-radius: 26px;
+      padding: 28px;
+      box-shadow: 0 8px 24px rgba(23, 32, 42, 0.04);
+      transition: var(--transition);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .story-card:hover,
+    .value-card:hover,
+    .mission-card:hover,
+    .team-card:hover,
+    .location-card:hover,
+    .timeline-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .story-card::before,
+    .mission-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--bird-red), var(--bird-yellow), var(--bird-green));
+    }
+
+    .story-card h2,
+    .mission-card h3,
+    .value-card h3,
+    .team-card h3,
+    .location-card h3,
+    .timeline-card h3 {
+      font-weight: 850;
+      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+    }
+
+    .story-card p,
+    .mission-card p,
+    .value-card p,
+    .team-card p,
+    .location-card p,
+    .timeline-card p {
+      color: var(--bird-muted);
+      line-height: 1.72;
+      margin-bottom: 0;
+    }
+
+    .icon-box {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+      background: rgba(215, 25, 32, 0.08);
+      color: var(--bird-red);
+      font-size: 1.45rem;
+      transition: var(--transition);
+    }
+
+    .value-card:hover .icon-box,
+    .mission-card:hover .icon-box {
+      transform: scale(1.07) rotate(-2deg);
+      background: rgba(0, 132, 61, 0.09);
+      color: var(--bird-green);
+    }
+
+    .timeline-list {
+      position: relative;
+      display: grid;
+      gap: 0;
+    }
+
+    .timeline-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 16px;
+      padding-bottom: 28px;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 26px;
+      top: 54px;
+      bottom: 0;
+      width: 2px;
+      background: var(--bird-border);
+    }
+
+    .timeline-item:last-child::before {
+      display: none;
+    }
+
+    .timeline-year {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
+      background: var(--bird-dark);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 0.9rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .timeline-content h3 {
+      font-size: 1.06rem;
+      margin-bottom: 6px;
+    }
+
+    .timeline-content p {
+      color: var(--bird-muted);
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+
+    .team-card {
+      text-align: center;
+      padding: 24px;
+    }
+
+    .avatar {
+      width: 76px;
+      height: 76px;
+      margin: 0 auto 18px;
+      border-radius: 24px;
+      background:
+        linear-gradient(135deg, rgba(215, 25, 32, 0.12), rgba(247, 198, 0, 0.2), rgba(0, 132, 61, 0.12));
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--bird-dark);
+      font-size: 1.7rem;
+      font-weight: 900;
+    }
+
+    .team-card h3 {
+      font-size: 1.08rem;
+      margin-bottom: 6px;
+    }
+
+    .team-card p {
+      min-height: 48px;
+      font-size: 0.94rem;
+      margin-bottom: 14px;
+    }
+
+    .team-social {
+      display: flex;
+      justify-content: center;
+      gap: 9px;
+    }
+
+    .team-social a {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--bird-light);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--bird-dark);
+      transition: var(--transition);
+    }
+
+    .team-social a:hover {
+      background: var(--bird-red);
+      color: #fff;
+    }
+
+    .location-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px;
+      border-radius: 18px;
+      background: var(--bird-light);
+      margin-top: 14px;
+    }
+
+    .location-item i {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--bird-red);
+      flex-shrink: 0;
+    }
+
+    .location-item strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .location-item span {
+      color: var(--bird-muted);
+    }
+
+    /* CTA */
+    .cta {
+      background:
+        radial-gradient(circle at top left, rgba(247, 198, 0, 0.25), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(0, 132, 61, 0.2), transparent 30%),
+        linear-gradient(135deg, #171f2a, #263241);
+      color: #fff;
+      border-radius: 34px;
+      padding: 58px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .cta::before {
+      content: "";
+      position: absolute;
+      right: -90px;
+      top: -90px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(215, 25, 32, 0.24);
+    }
+
+    .cta h2 {
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta p {
+      color: rgba(255, 255, 255, 0.76);
+      margin-bottom: 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-actions {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta .btn-bird-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.22);
+    }
+
+    .cta .btn-bird-secondary:hover {
+      background: #fff;
+      color: var(--bird-dark);
+    }
+
+    /* Footer */
+    .footer {
+      background: #111820;
+      color: #fff;
+      padding: 70px 0 24px;
+    }
+
+    .footer p,
+    .footer a,
+    .footer li {
+      color: rgba(255, 255, 255, 0.68);
+    }
+
+    .footer a {
+      transition: var(--transition);
+    }
+
+    .footer a:hover {
+      color: #fff;
+      padding-left: 3px;
+    }
+
+    .footer h3,
+    .footer h4 {
+      font-weight: 850;
+      margin-bottom: 18px;
+    }
+
+    .footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .footer-social a {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+
+    .footer-social a:hover {
+      background: var(--bird-green);
+      padding-left: 0;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 46px;
+      padding-top: 22px;
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 0.92rem;
+    }
+
+    /* Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .zoom-soft {
+      transition: transform 0.45s ease;
+    }
+
+    .zoom-soft:hover {
+      transform: scale(1.025);
+    }
+
+    /* Responsive */
+    @media (max-width: 991px) {
+      .about-hero {
+        padding: 72px 0;
+      }
+
+      .about-visual {
+        margin-top: 36px;
+        min-height: auto;
+      }
+
+      .section-padding {
+        padding: 72px 0;
+      }
+
+      .cta {
+        padding: 42px 28px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .topbar {
+        display: none;
+      }
+
+      .about-hero h1 {
+        letter-spacing: -0.055em;
+      }
+
+      .section-title {
+        text-align: left;
+      }
+
+      .cta-actions {
+        margin-top: 26px;
+      }
+
+      .cta-actions .btn-bird-primary,
+      .cta-actions .btn-bird-secondary,
+      .cta-actions .btn-whatsapp {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 575px) {
+      .about-hero {
+        padding: 56px 0;
+      }
+
+      .section-padding {
+        padding: 58px 0;
+      }
+
+      .story-card,
+      .value-card,
+      .mission-card,
+      .team-card,
+      .location-card,
+      .timeline-card {
+        padding: 22px;
+      }
+
+      .cta {
+        border-radius: 26px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Topbar -->
+  <div class="topbar py-2">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center">
+      <div class="d-flex flex-wrap gap-3 align-items-center">
+        <span class="topbar-link"><i class="bi bi-geo-alt-fill"></i>6 rue Maurice Paillard, 93430 Villetaneuse</span>
+        <a href="mailto:birdcompagny93@gmail.com" class="topbar-link"><i class="bi bi-envelope-fill"></i>birdcompagny93@gmail.com</a>
+        <a href="tel:+33753926876" class="topbar-link"><i class="bi bi-telephone-fill"></i>+33 7 53 92 68 76</a>
+      </div>
+
+      <div class="topbar-social d-flex gap-2">
+        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-xl sticky-top py-3">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-3" href="index.html">
+        <span class="brand-mark">B</span>
+        <span>
+          BIRD COMPANY
+          <small>Transport & logistique internationale</small>
+        </span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Ouvrir le menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav mx-auto mt-3 mt-xl-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link" href="suivi-colis.html">Suivi colis</a></li>
+          <li class="nav-item"><a class="nav-link active" href="a-propos.html">À propos</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#reservation">Réservation</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Boutique</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Plus
+            </a>
+            <ul class="dropdown-menu shadow-sm">
+              <li><a class="dropdown-item" href="#">Mes abonnements</a></li>
+              <li><a class="dropdown-item" href="#">Se connecter</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="navbar-actions d-flex flex-wrap gap-2">
+          <a href="suivi-colis.html" class="btn btn-bird-primary">Suivre mon colis</a>
+          <a href="index.html#reservation" class="btn btn-bird-secondary">Réserver</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <section class="about-hero">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6 reveal">
+            <div class="breadcrumb-soft">
+              <a href="index.html">Accueil</a>
+              <i class="bi bi-chevron-right small"></i>
+              <span>À propos</span>
+            </div>
+
+            <h1>
+              Une passerelle fiable entre la <span class="accent">Guinée</span> et le monde.
+            </h1>
+
+            <p>
+              Bird Company est une entreprise de transport et de logistique fondée pour simplifier les échanges entre la Guinée, la France et l’international avec des solutions rapides, sécurisées et transparentes.
+            </p>
+
+            <div class="d-flex flex-wrap gap-3 mt-4">
+              <a href="suivi-colis.html" class="btn btn-bird-primary">
+                <i class="bi bi-search me-2"></i>Suivre un colis
+              </a>
+              <a href="#mission" class="btn btn-bird-secondary">
+                <i class="bi bi-arrow-down-circle me-2"></i>Découvrir l’entreprise
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-6 reveal">
+            <div class="about-visual zoom-soft">
+              <div class="vision-map">
+                <div class="country-card">
+                  <div>
+                    <strong>France</strong>
+                    <span>Collecte, dépôt, groupage</span>
+                  </div>
+                  <div class="visual-icon"><i class="bi bi-box-seam"></i></div>
+                </div>
+
+                <div class="route-line"></div>
+
+                <div class="country-card">
+                  <div>
+                    <strong>Guinée</strong>
+                    <span>Réception, suivi, livraison</span>
+                  </div>
+                  <div class="visual-icon"><i class="bi bi-geo-alt"></i></div>
+                </div>
+              </div>
+
+              <div class="hero-stats row g-3">
+                <div class="col-6">
+                  <div class="mini-stat">
+                    <strong>2021</strong>
+                    <span>Année de création</span>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="mini-stat">
+                    <strong>2 pays</strong>
+                    <span>France & Guinée</span>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="mini-stat">
+                    <strong>3 modes</strong>
+                    <span>Aérien, maritime, express</span>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="mini-stat">
+                    <strong>Suivi</strong>
+                    <span>À chaque étape</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Story -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="row g-4 align-items-stretch">
+          <div class="col-lg-7 reveal">
+            <div class="story-card">
+              <span class="section-kicker"><i class="bi bi-building-check"></i>Notre histoire</span>
+              <h2 class="display-6">Une entreprise née d’un besoin concret.</h2>
+              <p>
+                Bienvenue chez Bird Company, fondée en 2021. L’entreprise est née d’une vision simple : faciliter les échanges entre la Guinée, la France et le reste du monde. Bird Company propose des solutions de transport fiables, rapides et sécurisées pour les particuliers et les professionnels.
+              </p>
+              <p class="mt-3">
+                L’entreprise accompagne les clients dans l’envoi de colis, le fret aérien, le fret maritime, l’envoi express, l’enlèvement de colis, la livraison à domicile et l’achat en ligne avec réception en Guinée.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-5 reveal">
+            <div class="timeline-card">
+              <span class="section-kicker"><i class="bi bi-clock-history"></i>Évolution</span>
+              <div class="timeline-list mt-3">
+                <div class="timeline-item">
+                  <div class="timeline-year">2021</div>
+                  <div class="timeline-content">
+                    <h3>Création de Bird Company</h3>
+                    <p>Lancement de l’entreprise avec une ambition claire : simplifier les échanges Guinée ↔ France.</p>
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-year">FR</div>
+                  <div class="timeline-content">
+                    <h3>Présence en France</h3>
+                    <p>Organisation des dépôts, collectes, réservations et échanges avec la diaspora.</p>
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-year">GN</div>
+                  <div class="timeline-content">
+                    <h3>Présence en Guinée</h3>
+                    <p>Gestion de la réception, du suivi administratif et de la livraison locale.</p>
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-year">+</div>
+                  <div class="timeline-content">
+                    <h3>Développement international</h3>
+                    <p>Ouverture progressive vers d’autres villes et pays selon les besoins des clients.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission vision -->
+    <section id="mission" class="section-padding soft-bg">
+      <div class="container">
+        <div class="section-title reveal">
+          <span class="section-kicker"><i class="bi bi-bullseye"></i>Mission & vision</span>
+          <h2>Une ambition simple : transporter avec confiance.</h2>
+          <p>Bird Company veut offrir une expérience claire, fiable et professionnelle à chaque client.</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-6 reveal">
+            <div class="mission-card">
+              <div class="icon-box"><i class="bi bi-bullseye"></i></div>
+              <h3>Mission</h3>
+              <p>
+                Offrir des solutions de transport et de logistique fiables, rapides et sécurisées, avec un suivi transparent à chaque étape.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-6 reveal">
+            <div class="mission-card">
+              <div class="icon-box"><i class="bi bi-eye"></i></div>
+              <h3>Vision</h3>
+              <p>
+                Devenir une référence dans le transport et le suivi de marchandises entre la Guinée, la France et l’international.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-title reveal">
+          <span class="section-kicker"><i class="bi bi-stars"></i>Nos valeurs</span>
+          <h2>Les engagements qui guident Bird Company.</h2>
+          <p>Le service doit être professionnel, mais aussi humain, transparent et adapté à la réalité des clients.</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4 reveal">
+            <div class="value-card">
+              <div class="icon-box"><i class="bi bi-shield-check"></i></div>
+              <h3>Fiabilité</h3>
+              <p>Assurer une prise en charge sérieuse des colis et marchandises, depuis le dépôt jusqu’à la livraison.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4 reveal">
+            <div class="value-card">
+              <div class="icon-box"><i class="bi bi-lightning-charge"></i></div>
+              <h3>Rapidité</h3>
+              <p>Proposer des solutions adaptées aux besoins urgents comme aux envois de gros volumes.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4 reveal">
+            <div class="value-card">
+              <div class="icon-box"><i class="bi bi-lock"></i></div>
+              <h3>Sécurité</h3>
+              <p>Traiter les marchandises avec attention et renforcer la confiance à chaque étape du parcours.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4 reveal">
+            <div class="value-card">
+              <div class="icon-box"><i class="bi bi-search-heart"></i></div>
+              <h3>Transparence</h3>
+              <p>Donner au client une meilleure visibilité sur l’état de son colis et les étapes de transport.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4 reveal">
+            <div class="value-card">
+              <div class="icon-box"><i class="bi bi-people"></i></div>
+              <h3>Proximité</h3>
+              <p>Être proche de la diaspora guinéenne, des familles, commerçants et professionnels.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4 reveal">
+            <div class="value-card">
+              <div class="icon-box"><i class="bi bi-briefcase"></i></div>
+              <h3>Professionnalisme</h3>
+              <p>Construire une image sérieuse, moderne et organisée dans le transport international.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Presence -->
+    <section class="section-padding soft-bg">
+      <div class="container">
+        <div class="row g-4 align-items-stretch">
+          <div class="col-lg-6 reveal">
+            <div class="location-card">
+              <span class="section-kicker"><i class="bi bi-geo-alt"></i>Présence</span>
+              <h3>Une organisation entre la France et la Guinée.</h3>
+              <p>
+                Bird Company s’appuie sur une présence opérationnelle permettant d’accompagner les clients au départ, pendant le transport et à l’arrivée.
+              </p>
+
+              <div class="location-item">
+                <i class="bi bi-geo-alt-fill"></i>
+                <div>
+                  <strong>France</strong>
+                  <span>6 rue Maurice Paillard, 93430 Villetaneuse</span>
+                </div>
+              </div>
+
+              <div class="location-item">
+                <i class="bi bi-truck"></i>
+                <div>
+                  <strong>Guinée</strong>
+                  <span>Réception, suivi administratif, logistique et livraison locale.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 reveal">
+            <div class="location-card">
+              <span class="section-kicker"><i class="bi bi-box-seam"></i>Services</span>
+              <h3>Des solutions pour plusieurs types de clients.</h3>
+              <p>
+                Bird Company accompagne les particuliers, les professionnels, les commerçants, les familles et la diaspora guinéenne dans leurs échanges réguliers.
+              </p>
+
+              <div class="location-item">
+                <i class="bi bi-airplane"></i>
+                <div>
+                  <strong>Fret aérien et express</strong>
+                  <span>Pour les besoins rapides, urgents ou sensibles au délai.</span>
+                </div>
+              </div>
+
+              <div class="location-item">
+                <i class="bi bi-water"></i>
+                <div>
+                  <strong>Fret maritime</strong>
+                  <span>Pour les volumes plus importants avec une solution plus économique.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-title reveal">
+          <span class="section-kicker"><i class="bi bi-person-badge"></i>Notre équipe</span>
+          <h2>Une équipe engagée pour mieux servir les clients.</h2>
+          <p>Des responsables en France et en Guinée pour structurer l’administratif, la logistique et le suivi.</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+          <div class="col-sm-6 col-lg-4 col-xl reveal">
+            <div class="team-card">
+              <div class="avatar">CS</div>
+              <h3>CAMARA Sékou</h3>
+              <p>Président</p>
+              <div class="team-social">
+                <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-4 col-xl reveal">
+            <div class="team-card">
+              <div class="avatar">DI</div>
+              <h3>DIOUBATE Ibrahima</h3>
+              <p>Directeur général</p>
+              <div class="team-social">
+                <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-4 col-xl reveal">
+            <div class="team-card">
+              <div class="avatar">FM</div>
+              <h3>FAYE Marième</h3>
+              <p>Responsable logistique et administrative France</p>
+              <div class="team-social">
+                <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-4 col-xl reveal">
+            <div class="team-card">
+              <div class="avatar">GA</div>
+              <h3>GONOMY Anne Marie</h3>
+              <p>Responsable administrative Guinée</p>
+              <div class="team-social">
+                <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-4 col-xl reveal">
+            <div class="team-card">
+              <div class="avatar">BK</div>
+              <h3>BARRY Kadiatou</h3>
+              <p>Responsable logistique Guinée</p>
+              <div class="team-social">
+                <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="pb-5">
+      <div class="container">
+        <div class="cta reveal">
+          <div class="row align-items-center g-4">
+            <div class="col-lg-7">
+              <h2>Vous voulez envoyer un colis avec Bird Company ?</h2>
+              <p>Contactez l’équipe pour choisir la solution adaptée : fret aérien, maritime, express, enlèvement ou livraison locale.</p>
+            </div>
+            <div class="col-lg-5">
+              <div class="cta-actions d-flex flex-column flex-sm-row flex-lg-column flex-xl-row gap-3 justify-content-lg-end">
+                <a href="https://wa.me/33753926876" class="btn btn-whatsapp">
+                  <i class="bi bi-whatsapp me-2"></i>WhatsApp
+                </a>
+                <a href="index.html#reservation" class="btn btn-bird-secondary">Réserver</a>
+                <a href="suivi-colis.html" class="btn btn-bird-primary">Suivre un colis</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <span class="brand-mark">B</span>
+            <h3 class="mb-0">BIRD COMPANY</h3>
+          </div>
+          <p class="lh-lg">
+            Transport, logistique et envoi de colis entre la Guinée, la France et l’international. Une solution fiable pour les particuliers, professionnels et la diaspora.
+          </p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-2">
+          <h4>Liens rapides</h4>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="suivi-colis.html">Suivi de colis</a></li>
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="index.html#reservation">Réservation</a></li>
+            <li><a href="#">Boutique</a></li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="index.html#services">Fret aérien Cargo</a></li>
+            <li><a href="index.html#services">Fret maritime</a></li>
+            <li><a href="index.html#services">Envoi express</a></li>
+            <li><a href="index.html#services">Enlèvement de colis</a></li>
+            <li><a href="index.html#services">Livraison à domicile</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3">
+          <h4>Contact</h4>
+          <ul>
+            <li>6 rue Maurice Paillard, 93430 Villetaneuse</li>
+            <li><a href="mailto:birdcompagny93@gmail.com">birdcompagny93@gmail.com</a></li>
+            <li><a href="tel:+33753926876">+33 7 53 92 68 76</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom d-flex flex-wrap justify-content-between gap-2">
+        <span>© 2026 Bird Company. Tous droits réservés.</span>
+        <span>Page à propos</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Navbar shadow on scroll
+    const navbar = document.querySelector(".navbar");
+
+    function updateNavbar() {
+      if (window.scrollY > 10) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    }
+
+    updateNavbar();
+    window.addEventListener("scroll", updateNavbar);
+
+    // Reveal animation on scroll
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.14 }
+    );
+
+    revealElements.forEach((element) => revealObserver.observe(element));
+  </script>
+</body>
+</html>
