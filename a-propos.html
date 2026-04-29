@@ -162,13 +162,14 @@
       color: #fff;
       border: 1px solid var(--bird-red);
       border-radius: 999px;
-      padding: 10px 16px;
+      padding: 6px 12px;
       font-weight: 700;
       transition: var(--transition);
       box-shadow: 0 12px 28px rgba(215, 25, 32, 0.18);
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      line-height: 1.2;
     }
 
     .btn-bird-primary:hover {
@@ -183,12 +184,13 @@
       color: var(--bird-dark);
       border: 1px solid var(--bird-border);
       border-radius: 999px;
-      padding: 10px 16px;
+      padding: 6px 12px;
       font-weight: 700;
       transition: var(--transition);
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      line-height: 1.2;
     }
 
     .btn-bird-secondary:hover {
@@ -202,19 +204,36 @@
       background: var(--bird-green);
       color: #fff;
       border-radius: 999px;
-      padding: 10px 16px;
+      padding: 6px 12px;
       font-weight: 700;
       transition: var(--transition);
       border: 1px solid var(--bird-green);
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      line-height: 1.2;
     }
 
     .btn-whatsapp:hover {
       background: #006f33;
       color: #fff;
       transform: translateY(-2px);
+    }
+
+    .btn-bird-primary.w-100,
+    .btn-bird-secondary.w-100,
+    .btn-whatsapp.w-100 {
+      width: fit-content !important;
+      max-width: 100%;
+      display: flex;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-bird-primary.h-100,
+    .btn-bird-secondary.h-100,
+    .btn-whatsapp.h-100 {
+      height: auto !important;
     }
 
     /* Topbar */
@@ -331,7 +350,7 @@
 
     .navbar-actions .btn {
       white-space: nowrap;
-      padding: 9px 14px;
+      padding: 6px 11px;
       font-size: 0.86rem;
     }
 
@@ -742,14 +761,14 @@
 
     .team-card {
       text-align: center;
-      padding: 24px;
+      padding: 18px 18px 22px;
     }
 
     .avatar {
-      width: 76px;
-      height: 76px;
-      margin: 0 auto 18px;
-      border-radius: 24px;
+      width: 148px;
+      height: 148px;
+      margin: 0 auto 20px;
+      border-radius: 32px;
       background:
         linear-gradient(135deg, rgba(215, 25, 32, 0.12), rgba(247, 198, 0, 0.2), rgba(0, 132, 61, 0.12));
       display: inline-flex;
@@ -758,6 +777,20 @@
       color: var(--bird-dark);
       font-size: 1.7rem;
       font-weight: 900;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(23, 32, 42, 0.12);
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.45s ease;
+    }
+
+    .team-card:hover .avatar img {
+      transform: scale(1.06);
     }
 
     .team-card h3 {
@@ -1464,63 +1497,83 @@
         </div>
 
         <div class="row g-4 justify-content-center">
-          <div class="col-sm-6 col-lg-4 col-xl reveal">
+          <div class="col-sm-6 col-lg-4 col-xl-3 reveal">
             <div class="team-card">
-              <div class="avatar">CS</div>
+              <div class="avatar">
+                <img src="assets/team/CamaraSekou.avif" alt="Portrait de CAMARA Sékou">
+              </div>
               <h3>CAMARA Sékou</h3>
               <p>Président</p>
-              <div class="team-social">
-                <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-              </div>
             </div>
           </div>
 
-          <div class="col-sm-6 col-lg-4 col-xl reveal">
+          <div class="col-sm-6 col-lg-4 col-xl-3 reveal">
             <div class="team-card">
-              <div class="avatar">DI</div>
+              <div class="avatar">
+                <img src="assets/team/DIOUBATE Ibrahima.avif" alt="Portrait de DIOUBATE Ibrahima">
+              </div>
               <h3>DIOUBATE Ibrahima</h3>
               <p>Directeur général</p>
-              <div class="team-social">
-                <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-              </div>
             </div>
           </div>
 
-          <div class="col-sm-6 col-lg-4 col-xl reveal">
+          <div class="col-sm-6 col-lg-4 col-xl-3 reveal">
             <div class="team-card">
-              <div class="avatar">FM</div>
+              <div class="avatar">
+                <img src="assets/team/KANDE Aly Badara.avif" alt="Portrait de KANDE Aly Badara">
+              </div>
+              <h3>KANDE Aly Badara</h3>
+              <p>Membre de l’équipe</p>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-4 col-xl-3 reveal">
+            <div class="team-card">
+              <div class="avatar">
+                <img src="assets/team/CAMARA Alkhaly.avif" alt="Portrait de CAMARA Alkhaly">
+              </div>
+              <h3>CAMARA Alkhaly</h3>
+              <p>Membre de l’équipe</p>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-4 col-xl-3 reveal">
+            <div class="team-card">
+              <div class="avatar">
+                <img src="assets/team/FAYE Marième.avif" alt="Portrait de FAYE Marième">
+              </div>
               <h3>FAYE Marième</h3>
               <p>Responsable logistique et administrative France</p>
-              <div class="team-social">
-                <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-              </div>
             </div>
           </div>
 
-          <div class="col-sm-6 col-lg-4 col-xl reveal">
+          <div class="col-sm-6 col-lg-4 col-xl-3 reveal">
             <div class="team-card">
-              <div class="avatar">GA</div>
+              <div class="avatar">
+                <img src="assets/team/KABA Mariame.avif" alt="Portrait de KABA Mariame">
+              </div>
+              <h3>KABA Mariame</h3>
+              <p>Membre de l’équipe</p>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-4 col-xl-3 reveal">
+            <div class="team-card">
+              <div class="avatar">
+                <img src="assets/team/GONOMY Anne Marie.avif" alt="Portrait de GONOMY Anne Marie">
+              </div>
               <h3>GONOMY Anne Marie</h3>
               <p>Responsable administrative Guinée</p>
-              <div class="team-social">
-                <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-              </div>
             </div>
           </div>
 
-          <div class="col-sm-6 col-lg-4 col-xl reveal">
+          <div class="col-sm-6 col-lg-4 col-xl-3 reveal">
             <div class="team-card">
-              <div class="avatar">BK</div>
+              <div class="avatar">
+                <img src="assets/team/BARRY Kadiatou.avif" alt="Portrait de BARRY Kadiatou">
+              </div>
               <h3>BARRY Kadiatou</h3>
               <p>Responsable logistique Guinée</p>
-              <div class="team-social">
-                <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-              </div>
             </div>
           </div>
         </div>
