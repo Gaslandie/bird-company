@@ -541,30 +541,45 @@
     }
 
     .mini-map-line {
+      --route-dot-size: 25px;
+      --route-dot-border: 7px;
       position: relative;
       height: 8px;
       margin: 26px 0;
       border-radius: 999px;
       background: linear-gradient(90deg, var(--bird-red), var(--bird-yellow), var(--bird-green));
-      overflow: hidden;
+      overflow: visible;
     }
 
     .mini-map-line::after {
       content: "";
       position: absolute;
-      top: -8px;
-      left: 54%;
-      width: 25px;
-      height: 25px;
+      top: 50%;
+      left: 0;
+      width: var(--route-dot-size);
+      height: var(--route-dot-size);
       border-radius: 50%;
       background: #fff;
-      border: 7px solid var(--bird-green);
-      animation: pulseDot 1.8s ease-in-out infinite;
+      border: var(--route-dot-border) solid var(--bird-red);
+      transform: translateY(-50%);
+      animation: routeDotTravel 2.8s ease-in-out infinite alternate;
+      box-shadow: 0 8px 18px rgba(21, 34, 48, 0.16);
     }
 
-    @keyframes pulseDot {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.14); }
+    @keyframes routeDotTravel {
+      0% {
+        left: 0;
+        border-color: var(--bird-red);
+      }
+
+      50% {
+        border-color: var(--bird-yellow);
+      }
+
+      100% {
+        left: calc(100% - var(--route-dot-size));
+        border-color: var(--bird-green);
+      }
     }
 
     /* Tracking search card */

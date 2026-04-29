@@ -559,24 +559,45 @@
     }
 
     .route-line {
+      --route-dot-size: 28px;
+      --route-dot-border: 8px;
       position: relative;
       height: 8px;
       margin: 28px 0;
       border-radius: 999px;
       background: linear-gradient(90deg, var(--bird-red), var(--bird-yellow), var(--bird-green));
-      overflow: hidden;
+      overflow: visible;
     }
 
     .route-line::after {
       content: "";
       position: absolute;
-      top: -9px;
-      left: 14%;
-      width: 28px;
-      height: 28px;
+      top: 50%;
+      left: 0;
+      width: var(--route-dot-size);
+      height: var(--route-dot-size);
       border-radius: 50%;
       background: #fff;
-      border: 8px solid var(--bird-red);
+      border: var(--route-dot-border) solid var(--bird-red);
+      transform: translateY(-50%);
+      animation: routeDotTravel 2.8s ease-in-out infinite alternate;
+      box-shadow: 0 8px 18px rgba(21, 34, 48, 0.16);
+    }
+
+    @keyframes routeDotTravel {
+      0% {
+        left: 0;
+        border-color: var(--bird-red);
+      }
+
+      50% {
+        border-color: var(--bird-yellow);
+      }
+
+      100% {
+        left: calc(100% - var(--route-dot-size));
+        border-color: var(--bird-green);
+      }
     }
 
     .country-card {
