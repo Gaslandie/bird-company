@@ -622,13 +622,41 @@
     }
 
     .tracking-form .btn-bird-primary {
-      min-height: 64px;
-      padding: 7px 14px;
-      font-size: 1.15rem;
+      min-height: 56px;
+      padding: 7px 10px;
+      font-size: 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-align: center;
+    }
+
+    .tracking-form .btn-bird-primary i {
+      font-size: 1.18rem;
+      margin-right: 0 !important;
     }
 
     .tracking-form .btn-bird-primary.w-100 {
       width: 100% !important;
+    }
+
+    @media (min-width: 768px) {
+      .tracking-form .tracking-field {
+        flex: 1 1 0;
+        width: auto;
+      }
+
+      .tracking-form .tracking-action {
+        flex: 0 0 150px;
+        width: 150px;
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .tracking-form .tracking-action .btn-bird-primary {
+        height: 56px !important;
+      }
     }
 
     .tracking-example {
@@ -691,6 +719,10 @@
       border-radius: 50%;
       background: var(--bird-green);
       box-shadow: 0 0 0 6px rgba(0, 132, 61, 0.12);
+    }
+
+    .tracking-side-panel {
+      height: auto;
     }
 
     .result-meta {
@@ -1366,12 +1398,12 @@
 
             <div class="col-lg-8">
               <form class="tracking-form row g-3" action="#" method="post">
-                <div class="col-md-8">
+                <div class="col-md-8 tracking-field">
                   <label class="visually-hidden" for="trackingNumber">Numéro de suivi</label>
                   <input type="text" class="form-control" id="trackingNumber" placeholder="Ex : BIRD-2026-0001">
                   <div class="tracking-example">Exemple de numéro : BIRD-2026-0001</div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 tracking-action">
                   <button type="submit" class="btn btn-bird-primary w-100 h-100">
                     <i class="bi bi-search me-2"></i>Suivre
                   </button>
@@ -1472,7 +1504,7 @@
           </div>
 
           <div class="col-lg-4 reveal">
-            <div class="result-card">
+            <div class="result-card tracking-side-panel">
               <h2 class="h4 fw-bold mb-4">Informations utiles</h2>
 
               <div class="side-list">
