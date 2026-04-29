@@ -558,21 +558,6 @@
       border-radius: 50%;
       background: #fff;
       border: 8px solid var(--bird-red);
-      animation: moveDot 4s ease-in-out infinite;
-    }
-
-    @keyframes moveDot {
-      0% {
-        left: 8%;
-      }
-
-      50% {
-        left: 78%;
-      }
-
-      100% {
-        left: 8%;
-      }
     }
 
     .country-card {
@@ -901,6 +886,10 @@
     }
 
     /* CTA */
+    .cta-section {
+      padding-top: 72px;
+    }
+
     .cta {
       background:
         radial-gradient(circle at top left, rgba(247, 198, 0, 0.25), transparent 30%),
@@ -1258,6 +1247,10 @@
         padding: 72px 0;
       }
 
+      .cta-section {
+        padding-top: 56px;
+      }
+
       .cta {
         padding: 42px 28px;
       }
@@ -1343,6 +1336,10 @@
 
       .section-padding {
         padding: 58px 0;
+      }
+
+      .cta-section {
+        padding-top: 44px;
       }
 
       .service-card,
@@ -1871,7 +1868,7 @@
     </section>
 
     <!-- CTA -->
-    <section id="reservation" class="pb-5">
+    <section id="reservation" class="cta-section pb-5">
       <div class="container">
         <div class="cta reveal">
           <div class="row align-items-center g-4">
