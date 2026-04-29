@@ -1053,6 +1053,20 @@
       0%, 100% { transform: scale(1); opacity: 1; }
       65% { transform: scale(1.45); opacity: 0; }
     }
+    main > section[class] + section[class] {
+      margin-top: clamp(32px, 5vw, 64px);
+    }
+
+    main + .footer {
+      margin-top: clamp(32px, 5vw, 64px);
+    }
+
+    @media (max-width: 767.98px) {
+      main > section[class] + section[class],
+      main + .footer {
+        margin-top: 28px;
+      }
+    }
   </style>
 </head>
 
