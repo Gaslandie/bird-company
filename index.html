@@ -2099,7 +2099,7 @@
 
     revealElements.forEach((element) => revealObserver.observe(element));
 
-    // Prevent empty fake form submissions during the mockup phase
+    // Keep forms on-page while the static site handles the interaction.
     document.querySelectorAll("form").forEach((form) => {
       form.addEventListener("submit", (event) => {
         event.preventDefault();
