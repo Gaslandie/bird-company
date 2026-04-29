@@ -20,6 +20,7 @@
       --bird-dark: #17202a;
       --bird-muted: #6b7280;
       --bird-light: #f7f8fa;
+      --bird-cream: #fff8dd;
       --bird-border: #e8eaef;
       --bird-white: #ffffff;
       --shadow-soft: 0 18px 45px rgba(23, 32, 42, 0.08);
@@ -91,6 +92,64 @@
       color: var(--bird-muted);
       font-size: 1.06rem;
       margin: 0;
+    }
+
+    .section-dark,
+    .section-light {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-dark {
+      background:
+        radial-gradient(circle at top left, rgba(247, 198, 0, 0.2), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(0, 132, 61, 0.16), transparent 34%),
+        linear-gradient(135deg, #111820 0%, #1d2733 100%);
+      color: #fff;
+    }
+
+    .section-light {
+      background:
+        radial-gradient(circle at top right, rgba(0, 132, 61, 0.08), transparent 34%),
+        linear-gradient(180deg, #ffffff 0%, var(--bird-cream) 100%);
+    }
+
+    .section-dark .section-title h2 {
+      color: #fff;
+    }
+
+    .section-dark .section-title p {
+      color: rgba(255, 255, 255, 0.74);
+    }
+
+    .section-dark .section-kicker {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--bird-yellow);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .section-light .section-title p {
+      color: #374151;
+    }
+
+    .section-dark .service-card,
+    .section-dark .choice-card,
+    .section-dark .step-card,
+    .section-dark .team-card,
+    .section-dark .contact-card,
+    .section-dark .about-card {
+      border-color: rgba(255, 255, 255, 0.13);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
+      color: var(--bird-dark);
+    }
+
+    .section-dark .service-card p,
+    .section-dark .choice-card p,
+    .section-dark .step-card p,
+    .section-dark .team-card p,
+    .section-dark .contact-card p,
+    .section-dark .about-card p {
+      color: var(--bird-muted);
     }
 
     .btn-bird-primary {
@@ -699,10 +758,6 @@
       line-height: 1.72;
     }
 
-    .soft-bg {
-      background: var(--bird-light);
-    }
-
     .choice-card {
       padding: 24px;
     }
@@ -1048,7 +1103,6 @@
     }
 
     /* Alternate section backgrounds */
-    .bg-blue-soft { background: #eef6ff; }
     .bg-warm-soft { background: #fffbf2; }
 
     /* Stats strip */
@@ -1523,7 +1577,7 @@
     </section>
 
     <!-- Services -->
-    <section id="services" class="section-padding">
+    <section id="services" class="section-padding section-dark">
       <div class="container">
         <div class="section-title reveal">
           <span class="section-kicker"><i class="bi bi-grid-1x2"></i>Nos services</span>
@@ -1585,7 +1639,7 @@
     </section>
 
     <!-- Why choose -->
-    <section class="section-padding soft-bg">
+    <section class="section-padding section-light">
       <div class="container">
         <div class="section-title reveal">
           <span class="section-kicker"><i class="bi bi-shield-check"></i>Pourquoi nous choisir ?</span>
@@ -1647,7 +1701,7 @@
     </section>
 
     <!-- How it works -->
-    <section class="section-padding bg-blue-soft">
+    <section class="section-padding section-dark">
       <div class="container">
         <div class="section-title reveal">
           <span class="section-kicker"><i class="bi bi-diagram-3"></i>Comment ça marche ?</span>
@@ -1700,7 +1754,7 @@
     </section>
 
     <!-- About -->
-    <section id="about" class="section-padding soft-bg">
+    <section id="about" class="section-padding section-light">
       <div class="container">
         <div class="row align-items-center g-5">
           <div class="col-lg-6 reveal">
@@ -1743,7 +1797,7 @@
     </section>
 
     <!-- Team -->
-    <section class="section-padding">
+    <section class="section-padding section-dark">
       <div class="container">
         <div class="section-title reveal">
           <span class="section-kicker"><i class="bi bi-person-badge"></i>Notre équipe</span>
@@ -1842,7 +1896,7 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="section-padding soft-bg">
+    <section id="contact" class="section-padding section-light">
       <div class="container">
         <div class="section-title reveal">
           <span class="section-kicker"><i class="bi bi-envelope-paper"></i>Contact</span>

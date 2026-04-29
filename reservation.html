@@ -17,6 +17,7 @@
       --bird-dark: #17202a;
       --bird-muted: #6b7280;
       --bird-light: #f7f8fa;
+      --bird-cream: #fff8dd;
       --bird-border: #e8eaef;
       --shadow-soft: 0 18px 45px rgba(23, 32, 42, 0.08);
       --shadow-card: 0 14px 35px rgba(23, 32, 42, 0.07);
@@ -35,7 +36,6 @@
     a { text-decoration: none; color: inherit; }
 
     .section-padding { padding: 90px 0; }
-    .soft-bg { background: var(--bird-light); }
 
     .section-title {
       max-width: 780px;
@@ -67,6 +67,58 @@
       color: var(--bird-muted);
       font-size: 1.06rem;
       margin: 0;
+    }
+
+    .section-dark,
+    .section-light {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-dark {
+      background:
+        radial-gradient(circle at top left, rgba(247, 198, 0, 0.2), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(0, 132, 61, 0.16), transparent 34%),
+        linear-gradient(135deg, #111820 0%, #1d2733 100%);
+      color: #fff;
+    }
+
+    .section-light {
+      background:
+        radial-gradient(circle at top right, rgba(0, 132, 61, 0.08), transparent 34%),
+        linear-gradient(180deg, #ffffff 0%, var(--bird-cream) 100%);
+    }
+
+    .section-dark .section-title h2 {
+      color: #fff;
+    }
+
+    .section-dark .section-title p {
+      color: rgba(255, 255, 255, 0.74);
+    }
+
+    .section-dark .section-kicker {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--bird-yellow);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .section-light .section-title p {
+      color: #374151;
+    }
+
+    .section-dark .service-card,
+    .section-dark .step-card,
+    .section-dark .faq-card {
+      border-color: rgba(255, 255, 255, 0.13);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
+      color: var(--bird-dark);
+    }
+
+    .section-dark .service-card p,
+    .section-dark .step-card p,
+    .section-dark .faq-card p {
+      color: var(--bird-muted);
     }
 
     .btn-bird-primary,
@@ -697,8 +749,6 @@
     }
 
     /* Alternate backgrounds */
-    .bg-blue-soft { background: #eef6ff; }
-
     /* Stagger */
     .reveal.delay-1 { transition-delay: 0.10s; }
     .reveal.delay-2 { transition-delay: 0.20s; }
@@ -1148,7 +1198,7 @@
       </div>
     </section>
 
-    <section class="section-padding bg-blue-soft">
+    <section class="section-padding section-dark">
       <div class="container">
         <div class="section-title reveal">
           <span class="section-kicker"><i class="bi bi-grid-1x2"></i>Services réservables</span>
@@ -1182,7 +1232,7 @@
       </div>
     </section>
 
-    <section class="section-padding soft-bg">
+    <section class="section-padding section-light">
       <div class="container">
         <div class="section-title reveal">
           <span class="section-kicker"><i class="bi bi-diagram-3"></i>Après votre demande</span>
@@ -1230,7 +1280,7 @@
       </div>
     </section>
 
-    <section class="section-padding">
+    <section class="section-padding section-dark">
       <div class="container">
         <div class="section-title reveal">
           <span class="section-kicker"><i class="bi bi-question-circle"></i>Questions fréquentes</span>

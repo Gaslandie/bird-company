@@ -18,6 +18,7 @@
       --bird-dark: #17202a;
       --bird-muted: #6b7280;
       --bird-light: #f7f8fa;
+      --bird-cream: #fff8dd;
       --bird-border: #e8eaef;
       --bird-white: #ffffff;
       --shadow-soft: 0 18px 45px rgba(23, 32, 42, 0.08);
@@ -89,6 +90,71 @@
       color: var(--bird-muted);
       font-size: 1.06rem;
       margin: 0;
+    }
+
+    .section-dark,
+    .section-light {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-dark {
+      background:
+        radial-gradient(circle at top left, rgba(247, 198, 0, 0.2), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(0, 132, 61, 0.16), transparent 34%),
+        linear-gradient(135deg, #111820 0%, #1d2733 100%);
+      color: #fff;
+    }
+
+    .section-light {
+      background:
+        radial-gradient(circle at top right, rgba(0, 132, 61, 0.08), transparent 34%),
+        linear-gradient(180deg, #ffffff 0%, var(--bird-cream) 100%);
+    }
+
+    .section-dark .section-title h2 {
+      color: #fff;
+    }
+
+    .section-dark .section-title p {
+      color: rgba(255, 255, 255, 0.74);
+    }
+
+    .section-dark .section-kicker {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--bird-yellow);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .section-light .section-title p {
+      color: #374151;
+    }
+
+    .section-dark .story-card,
+    .section-dark .value-card,
+    .section-dark .mission-card,
+    .section-dark .team-card,
+    .section-dark .location-card,
+    .section-dark .timeline-card {
+      border-color: rgba(255, 255, 255, 0.13);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
+      color: var(--bird-dark);
+    }
+
+    .section-dark .story-card p,
+    .section-dark .value-card p,
+    .section-dark .mission-card p,
+    .section-dark .team-card p,
+    .section-dark .location-card p,
+    .section-dark .timeline-card p {
+      color: var(--bird-muted);
+    }
+
+    .section-dark .story-card .section-kicker,
+    .section-dark .timeline-card .section-kicker {
+      background: rgba(0, 132, 61, 0.08);
+      color: var(--bird-green);
+      border: 0;
     }
 
     .btn-bird-primary {
@@ -535,10 +601,6 @@
       font-weight: 650;
     }
 
-    .soft-bg {
-      background: var(--bird-light);
-    }
-
     .story-card,
     .value-card,
     .mission-card,
@@ -884,8 +946,6 @@
     }
 
     /* Alternate backgrounds */
-    .bg-blue-soft { background: #eef6ff; }
-
     /* Stagger */
     .reveal.delay-1 { transition-delay: 0.10s; }
     .reveal.delay-2 { transition-delay: 0.20s; }
@@ -1167,7 +1227,7 @@
     </section>
 
     <!-- Story -->
-    <section class="section-padding">
+    <section class="section-padding section-dark">
       <div class="container">
         <div class="row g-4 align-items-stretch">
           <div class="col-lg-7 reveal">
@@ -1227,7 +1287,7 @@
     </section>
 
     <!-- Mission vision -->
-    <section id="mission" class="section-padding soft-bg">
+    <section id="mission" class="section-padding section-light">
       <div class="container">
         <div class="section-title reveal">
           <span class="section-kicker"><i class="bi bi-bullseye"></i>Mission & vision</span>
@@ -1260,7 +1320,7 @@
     </section>
 
     <!-- Values -->
-    <section class="section-padding bg-blue-soft">
+    <section class="section-padding section-dark">
       <div class="container">
         <div class="section-title reveal">
           <span class="section-kicker"><i class="bi bi-stars"></i>Nos valeurs</span>
@@ -1321,7 +1381,7 @@
     </section>
 
     <!-- Presence -->
-    <section class="section-padding soft-bg">
+    <section class="section-padding section-light">
       <div class="container">
         <div class="row g-4 align-items-stretch">
           <div class="col-lg-6 reveal">
@@ -1381,7 +1441,7 @@
     </section>
 
     <!-- Team -->
-    <section class="section-padding">
+    <section class="section-padding section-dark">
       <div class="container">
         <div class="section-title reveal">
           <span class="section-kicker"><i class="bi bi-person-badge"></i>Notre équipe</span>
