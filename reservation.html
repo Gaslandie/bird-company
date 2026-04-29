@@ -439,7 +439,6 @@
     .service-card,
     .step-card,
     .faq-card {
-      height: 100%;
       background: #fff;
       border: 1px solid var(--bird-border);
       border-radius: 28px;
@@ -448,6 +447,23 @@
       transition: var(--transition);
       overflow: hidden;
       position: relative;
+    }
+
+    .reservation-card,
+    .service-card,
+    .step-card,
+    .faq-card {
+      height: 100%;
+    }
+
+    .reservation-sidebar {
+      align-self: flex-start;
+      display: grid;
+      gap: 24px;
+    }
+
+    .side-card {
+      height: auto;
     }
 
     .reservation-card { box-shadow: var(--shadow-soft); }
@@ -1135,7 +1151,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4 reveal">
+          <div class="col-lg-4 reveal reservation-sidebar">
             <div class="side-card">
               <div class="form-section-title">
                 <span><i class="bi bi-shield-check"></i></span>
@@ -1169,7 +1185,7 @@
               </a>
             </div>
 
-            <div class="side-card mt-4">
+            <div class="side-card">
               <div class="form-section-title">
                 <span><i class="bi bi-telephone"></i></span>
                 <div>
