@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mes abonnements Bird Company - Consultez les formules d'abonnement pour les envois réguliers entre la France, la Guinée et l'international." />
+  <title>Mes abonnements | Bird Company</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --bird-red: #d71920;
+      --bird-yellow: #f7c600;
+      --bird-green: #00843d;
+      --bird-dark: #17202a;
+      --bird-muted: #6b7280;
+      --bird-light: #f7f8fa;
+      --bird-border: #e8eaef;
+      --shadow-soft: 0 18px 45px rgba(23, 32, 42, 0.08);
+      --shadow-card: 0 14px 35px rgba(23, 32, 42, 0.07);
+      --transition: all 0.3s ease;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--bird-dark);
+      background: #fff;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    .section-padding { padding: 90px 0; }
+    .soft-bg { background: var(--bird-light); }
+
+    .section-title {
+      max-width: 780px;
+      margin: 0 auto 50px;
+      text-align: center;
+    }
+
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      margin-bottom: 14px;
+      border-radius: 999px;
+      background: rgba(0, 132, 61, 0.08);
+      color: var(--bird-green);
+      font-weight: 700;
+      font-size: 0.82rem;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 850;
+      letter-spacing: -0.04em;
+      margin-bottom: 16px;
+    }
+
+    .section-title p {
+      color: var(--bird-muted);
+      font-size: 1.06rem;
+      margin: 0;
+    }
+
+    .btn-bird-primary,
+    .btn-bird-secondary,
+    .btn-whatsapp {
+      border-radius: 999px;
+      padding: 12px 22px;
+      font-weight: 750;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-bird-primary {
+      background: var(--bird-red);
+      color: #fff;
+      border: 1px solid var(--bird-red);
+      box-shadow: 0 12px 28px rgba(215, 25, 32, 0.18);
+    }
+
+    .btn-bird-primary:hover {
+      background: #b9151b;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .btn-bird-secondary {
+      background: #fff;
+      color: var(--bird-dark);
+      border: 1px solid var(--bird-border);
+    }
+
+    .btn-bird-secondary:hover {
+      color: var(--bird-green);
+      border-color: var(--bird-green);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .btn-whatsapp {
+      background: var(--bird-green);
+      color: #fff;
+      border: 1px solid var(--bird-green);
+    }
+
+    .btn-whatsapp:hover {
+      background: #006f33;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* Topbar */
+    .topbar {
+      background: #fff;
+      border-bottom: 1px solid var(--bird-border);
+      font-size: 0.88rem;
+      color: var(--bird-muted);
+    }
+
+    .topbar-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      white-space: nowrap;
+    }
+
+    .topbar i { color: var(--bird-red); }
+
+    .topbar-social a {
+      width: 30px;
+      height: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--bird-light);
+      transition: var(--transition);
+    }
+
+    .topbar-social a:hover {
+      background: var(--bird-green);
+      color: #fff;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(232, 234, 239, 0.8);
+      transition: var(--transition);
+      z-index: 1030;
+    }
+
+    .navbar.scrolled { box-shadow: 0 12px 34px rgba(23, 32, 42, 0.08); }
+    .navbar .container { gap: 18px; }
+
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 15px;
+      background: linear-gradient(135deg, var(--bird-red) 0 33%, var(--bird-yellow) 33% 66%, var(--bird-green) 66% 100%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 900;
+      box-shadow: 0 12px 28px rgba(0, 132, 61, 0.15);
+      flex-shrink: 0;
+    }
+
+    .navbar-brand {
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: var(--bird-dark);
+      flex-shrink: 0;
+      margin-right: 0;
+    }
+
+    .navbar-brand small {
+      display: block;
+      color: var(--bird-muted);
+      font-size: 0.72rem;
+      font-weight: 600;
+      margin-top: -2px;
+    }
+
+    .navbar-collapse { min-width: 0; }
+    .navbar-nav { align-items: center; gap: 2px; }
+
+    .navbar-nav .nav-link {
+      color: var(--bird-dark);
+      font-weight: 650;
+      font-size: 0.88rem;
+      padding: 8px 9px;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active { color: var(--bird-red); }
+
+    .navbar-actions { flex-shrink: 0; }
+    .navbar-actions .btn { white-space: nowrap; }
+    .navbar-actions .btn-bird-secondary { display: none; }
+
+    .navbar-toggler {
+      border: 1px solid var(--bird-border);
+      border-radius: 12px;
+      padding: 8px 10px;
+    }
+
+    .navbar-toggler:focus { box-shadow: none; }
+
+    .dropdown-menu {
+      border: 1px solid var(--bird-border);
+      border-radius: 18px;
+      padding: 10px;
+    }
+
+    .dropdown-item {
+      border-radius: 12px;
+      font-weight: 650;
+      padding: 10px 14px;
+      color: var(--bird-dark);
+    }
+
+    .dropdown-item:hover {
+      background: var(--bird-light);
+      color: var(--bird-red);
+    }
+
+    /* Hero */
+    .subscriptions-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 92px 0 110px;
+      background:
+        radial-gradient(circle at top left, rgba(247, 198, 0, 0.18), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(0, 132, 61, 0.12), transparent 30%),
+        linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    }
+
+    .subscriptions-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(23, 32, 42, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(23, 32, 42, 0.035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, black, transparent 86%);
+      pointer-events: none;
+    }
+
+    .subscriptions-hero .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .breadcrumb-soft {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 15px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--bird-border);
+      color: var(--bird-muted);
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 22px;
+      box-shadow: 0 10px 28px rgba(23, 32, 42, 0.05);
+    }
+
+    .breadcrumb-soft a { color: var(--bird-green); }
+
+    .subscriptions-hero h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 0.98;
+      letter-spacing: -0.065em;
+      font-weight: 900;
+      margin-bottom: 22px;
+    }
+
+    .subscriptions-hero h1 .accent {
+      position: relative;
+      display: inline-block;
+    }
+
+    .subscriptions-hero h1 .accent::after {
+      content: "";
+      position: absolute;
+      left: 4px;
+      right: 4px;
+      bottom: 5px;
+      height: 13px;
+      background: rgba(247, 198, 0, 0.55);
+      z-index: -1;
+      border-radius: 999px;
+    }
+
+    .subscriptions-hero p {
+      max-width: 690px;
+      color: var(--bird-muted);
+      font-size: 1.13rem;
+      line-height: 1.75;
+      margin-bottom: 0;
+    }
+
+    .hero-panel {
+      border-radius: 28px;
+      background: #fff;
+      border: 1px solid var(--bird-border);
+      box-shadow: var(--shadow-soft);
+      padding: 26px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      right: -70px;
+      top: -70px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(247, 198, 0, 0.28);
+    }
+
+    .hero-panel-inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    .account-card {
+      padding: 22px;
+      border-radius: 24px;
+      background: var(--bird-light);
+      border: 1px solid var(--bird-border);
+      margin-bottom: 16px;
+    }
+
+    .account-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--bird-border);
+    }
+
+    .account-row:last-child { border-bottom: 0; }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(0, 132, 61, 0.08);
+      color: var(--bird-green);
+      font-weight: 800;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    .status-pill::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--bird-green);
+      box-shadow: 0 0 0 6px rgba(0, 132, 61, 0.12);
+    }
+
+    .subscriptions-wrapper {
+      margin-top: -60px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .login-card,
+    .plan-card,
+    .benefit-card,
+    .faq-card {
+      height: 100%;
+      background: #fff;
+      border: 1px solid var(--bird-border);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: 0 8px 24px rgba(23, 32, 42, 0.04);
+      transition: var(--transition);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .login-card {
+      box-shadow: var(--shadow-soft);
+    }
+
+    .login-card::before,
+    .plan-card.featured::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--bird-red), var(--bird-yellow), var(--bird-green));
+    }
+
+    .plan-card:hover,
+    .benefit-card:hover,
+    .faq-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .plan-card.featured {
+      border-color: rgba(0, 132, 61, 0.28);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .plan-badge {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(215, 25, 32, 0.08);
+      color: var(--bird-red);
+      font-weight: 800;
+      font-size: 0.82rem;
+      margin-bottom: 18px;
+    }
+
+    .plan-price {
+      font-size: 2.4rem;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      margin-bottom: 4px;
+    }
+
+    .plan-price span {
+      font-size: 0.95rem;
+      color: var(--bird-muted);
+      letter-spacing: 0;
+      font-weight: 700;
+    }
+
+    .plan-card p,
+    .benefit-card p,
+    .faq-card p {
+      color: var(--bird-muted);
+      line-height: 1.72;
+    }
+
+    .plan-list {
+      list-style: none;
+      padding: 0;
+      margin: 22px 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .plan-list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: var(--bird-muted);
+      font-weight: 600;
+    }
+
+    .plan-list i {
+      color: var(--bird-green);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .form-section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--bird-border);
+    }
+
+    .form-section-title span,
+    .icon-box {
+      width: 46px;
+      height: 46px;
+      border-radius: 15px;
+      background: rgba(215, 25, 32, 0.08);
+      color: var(--bird-red);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+
+    .form-section-title h2,
+    .form-section-title h3 {
+      font-weight: 900;
+      letter-spacing: -0.035em;
+      margin: 0;
+    }
+
+    .form-label {
+      font-weight: 750;
+      color: var(--bird-dark);
+      margin-bottom: 8px;
+    }
+
+    .form-control,
+    .form-select {
+      border-radius: 15px;
+      border: 1px solid var(--bird-border);
+      padding: 13px 15px;
+      font-weight: 600;
+      color: var(--bird-dark);
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      border-color: var(--bird-green);
+      box-shadow: 0 0 0 0.22rem rgba(0, 132, 61, 0.12);
+    }
+
+    .login-note {
+      border-radius: 20px;
+      background: rgba(247, 198, 0, 0.14);
+      border: 1px solid rgba(247, 198, 0, 0.32);
+      padding: 18px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .login-note i {
+      color: #b58b00;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .benefit-card h3,
+    .faq-card h3 {
+      font-size: 1.18rem;
+      font-weight: 850;
+      margin: 16px 0 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .benefit-card:hover .icon-box,
+    .faq-card:hover .icon-box {
+      transform: scale(1.07) rotate(-2deg);
+      background: rgba(0, 132, 61, 0.09);
+      color: var(--bird-green);
+    }
+
+    .cta {
+      background:
+        radial-gradient(circle at top left, rgba(247, 198, 0, 0.25), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(0, 132, 61, 0.2), transparent 30%),
+        linear-gradient(135deg, #171f2a, #263241);
+      color: #fff;
+      border-radius: 34px;
+      padding: 58px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .cta::before {
+      content: "";
+      position: absolute;
+      right: -90px;
+      top: -90px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(215, 25, 32, 0.24);
+    }
+
+    .cta h2,
+    .cta p,
+    .cta-actions {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta h2 {
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      margin-bottom: 14px;
+    }
+
+    .cta p {
+      color: rgba(255, 255, 255, 0.76);
+      margin-bottom: 0;
+    }
+
+    .cta .btn-bird-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.22);
+    }
+
+    .cta .btn-bird-secondary:hover {
+      background: #fff;
+      color: var(--bird-dark);
+    }
+
+    .footer {
+      background: #111820;
+      color: #fff;
+      padding: 70px 0 24px;
+    }
+
+    .footer p,
+    .footer a,
+    .footer li {
+      color: rgba(255, 255, 255, 0.68);
+    }
+
+    .footer a { transition: var(--transition); }
+
+    .footer a:hover {
+      color: #fff;
+      padding-left: 3px;
+    }
+
+    .footer h3,
+    .footer h4 {
+      font-weight: 850;
+      margin-bottom: 18px;
+    }
+
+    .footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .footer-social a {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+
+    .footer-social a:hover {
+      background: var(--bird-green);
+      padding-left: 0;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 46px;
+      padding-top: 22px;
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 0.92rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1199px) {
+      .navbar-nav {
+        align-items: flex-start;
+        gap: 4px;
+        margin-top: 16px;
+      }
+
+      .navbar-nav .nav-link {
+        padding: 10px 0;
+        font-size: 0.95rem;
+      }
+
+      .navbar-actions { margin-top: 16px; }
+      .navbar-actions .btn-bird-secondary { display: inline-flex; }
+    }
+
+    @media (max-width: 991px) {
+      .subscriptions-hero { padding: 72px 0 96px; }
+      .hero-panel { margin-top: 36px; }
+      .section-padding { padding: 72px 0; }
+      .cta { padding: 42px 28px; }
+    }
+
+    @media (max-width: 767px) {
+      .topbar { display: none; }
+      .subscriptions-hero h1 { letter-spacing: -0.055em; }
+      .subscriptions-wrapper { margin-top: -48px; }
+      .login-card,
+      .plan-card,
+      .benefit-card,
+      .faq-card { padding: 22px; }
+      .section-title { text-align: left; }
+      .cta-actions { margin-top: 26px; }
+      .cta-actions .btn-bird-primary,
+      .cta-actions .btn-bird-secondary,
+      .cta-actions .btn-whatsapp { width: 100%; }
+    }
+
+    @media (max-width: 575px) {
+      .subscriptions-hero { padding: 56px 0 82px; }
+      .section-padding { padding: 58px 0; }
+      .cta { border-radius: 26px; }
+    }
+
+    .bg-blue-soft { background: #eef6ff; }
+
+    .reveal.delay-1 { transition-delay: 0.12s; }
+    .reveal.delay-2 { transition-delay: 0.24s; }
+    .reveal.delay-3 { transition-delay: 0.36s; }
+    .reveal.delay-4 { transition-delay: 0.48s; }
+    .reveal.delay-5 { transition-delay: 0.60s; }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 990;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: var(--bird-green);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.65rem;
+      box-shadow: 0 10px 30px rgba(0, 132, 61, 0.42);
+      transition: var(--transition);
+      text-decoration: none;
+    }
+    .whatsapp-float:hover { background: #006f33; color: #fff; transform: translateY(-4px) scale(1.07); }
+    .whatsapp-float::before {
+      content: "";
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      background: rgba(0, 132, 61, 0.18);
+      animation: waPulse 2.8s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes waPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      65% { transform: scale(1.45); opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar py-2">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center">
+      <div class="d-flex flex-wrap gap-3 align-items-center">
+        <span class="topbar-link"><i class="bi bi-geo-alt-fill"></i>6 rue Maurice Paillard, 93430 Villetaneuse</span>
+        <a href="mailto:birdcompagny93@gmail.com" class="topbar-link"><i class="bi bi-envelope-fill"></i>birdcompagny93@gmail.com</a>
+        <a href="tel:+33753926876" class="topbar-link"><i class="bi bi-telephone-fill"></i>+33 7 53 92 68 76</a>
+      </div>
+
+      <div class="topbar-social d-flex gap-2">
+        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-xl sticky-top py-3">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-3" href="index.html">
+        <span class="brand-mark">B</span>
+        <span>
+          BIRD COMPANY
+          <small>Transport & logistique internationale</small>
+        </span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Ouvrir le menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav mx-auto mt-3 mt-xl-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link" href="suivi-colis.html">Suivi colis</a></li>
+          <li class="nav-item"><a class="nav-link" href="a-propos.html">À propos</a></li>
+          <li class="nav-item"><a class="nav-link" href="reservation.html">Réservation</a></li>
+          <li class="nav-item"><a class="nav-link" href="boutique.html">Boutique</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Plus
+            </a>
+            <ul class="dropdown-menu shadow-sm">
+              <li><a class="dropdown-item active" href="abonnements.html">Mes abonnements</a></li>
+              <li><a class="dropdown-item" href="connexion.html">Se connecter</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="navbar-actions d-flex flex-wrap gap-2">
+          <a href="suivi-colis.html" class="btn btn-bird-primary">Suivre mon colis</a>
+          <a href="reservation.html" class="btn btn-bird-secondary">Réserver</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="subscriptions-hero">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6 reveal">
+            <div class="breadcrumb-soft">
+              <a href="index.html">Accueil</a>
+              <i class="bi bi-chevron-right small"></i>
+              <span>Mes abonnements</span>
+            </div>
+
+            <h1>Gérez vos envois réguliers avec des <span class="accent">abonnements simples</span>.</h1>
+
+            <p>
+              Cette page permet de présenter un futur espace client pour les particuliers, commerçants et professionnels qui envoient régulièrement des colis entre la France, la Guinée et l’international.
+            </p>
+
+            <div class="d-flex flex-wrap gap-3 mt-4">
+              <a href="#plans" class="btn btn-bird-primary">
+                <i class="bi bi-box-seam me-2"></i>Voir les formules
+              </a>
+              <a href="#loginArea" class="btn btn-bird-secondary">
+                <i class="bi bi-person-circle me-2"></i>Accéder à mon espace
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-6 reveal">
+            <div class="hero-panel">
+              <div class="hero-panel-inner">
+                <div class="account-card">
+                  <div class="d-flex align-items-center gap-3 mb-3">
+                    <span class="brand-mark"><i class="bi bi-person-check"></i></span>
+                    <div>
+                      <h2 class="h5 fw-bold mb-1">Espace client Bird</h2>
+                      <p class="text-secondary mb-0">Aperçu de votre futur tableau de bord.</p>
+                    </div>
+                  </div>
+
+                  <div class="account-row">
+                    <div>
+                      <strong>Formule actuelle</strong>
+                      <div class="text-secondary">Pro diaspora</div>
+                    </div>
+                    <span class="status-pill">Active</span>
+                  </div>
+
+                  <div class="account-row">
+                    <div>
+                      <strong>Colis ce mois</strong>
+                      <div class="text-secondary">8 envois enregistrés</div>
+                    </div>
+                    <i class="bi bi-box-seam fs-4 text-danger"></i>
+                  </div>
+
+                  <div class="account-row">
+                    <div>
+                      <strong>Support</strong>
+                      <div class="text-secondary">Assistance prioritaire</div>
+                    </div>
+                    <i class="bi bi-headset fs-4 text-success"></i>
+                  </div>
+                </div>
+
+                <div class="row g-3">
+                  <div class="col-6">
+                    <div class="p-3 rounded-4 bg-white border">
+                      <strong class="d-block fs-4">-10%</strong>
+                      <span class="text-secondary">Avantage membre</span>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="p-3 rounded-4 bg-white border">
+                      <strong class="d-block fs-4">24/7</strong>
+                      <span class="text-secondary">Suivi en ligne</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="loginArea" class="subscriptions-wrapper">
+      <div class="container">
+        <div class="login-card reveal">
+          <div class="row align-items-center g-4">
+            <div class="col-lg-5">
+              <div class="form-section-title">
+                <span><i class="bi bi-person-circle"></i></span>
+                <div>
+                  <h2>Accès client</h2>
+                  <p class="text-secondary mb-0">Zone prévue pour la future connexion.</p>
+                </div>
+              </div>
+
+              <div class="login-note">
+                <i class="bi bi-info-circle-fill"></i>
+                <div>
+                  <strong>Maquette :</strong> cette zone est visuelle pour le moment. Plus tard, elle pourra être connectée à une vraie authentification client.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-7">
+              <form action="#" method="post">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label for="email" class="form-label">Email ou téléphone</label>
+                    <input type="text" class="form-control" id="email" placeholder="votre@email.com">
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="code" class="form-label">Code client</label>
+                    <input type="text" class="form-control" id="code" placeholder="Ex : BIRD-CLIENT-001">
+                  </div>
+
+                  <div class="col-12 d-flex flex-wrap gap-3">
+                    <button type="submit" class="btn btn-bird-primary">
+                      <i class="bi bi-box-arrow-in-right me-2"></i>Accéder à mon espace
+                    </button>
+                    <a href="reservation.html" class="btn btn-bird-secondary">
+                      <i class="bi bi-calendar-check me-2"></i>Réserver un service
+                    </a>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="plans" class="section-padding">
+      <div class="container">
+        <div class="section-title reveal">
+          <span class="section-kicker"><i class="bi bi-stars"></i>Formules proposées</span>
+          <h2>Des abonnements pensés pour les clients réguliers.</h2>
+          <p>Les prix peuvent être ajustés plus tard. Ici, l’objectif est de montrer une structure claire et premium.</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-4 reveal">
+            <div class="plan-card">
+              <span class="plan-badge">Particulier</span>
+              <h3 class="fw-bold">Essentiel</h3>
+              <p>Pour les familles et particuliers qui envoient quelques colis dans le mois.</p>
+              <div class="plan-price">Sur devis <span>/ mois</span></div>
+              <ul class="plan-list">
+                <li><i class="bi bi-check-circle-fill"></i>Suivi de colis en ligne</li>
+                <li><i class="bi bi-check-circle-fill"></i>Assistance standard</li>
+                <li><i class="bi bi-check-circle-fill"></i>Historique des demandes</li>
+                <li><i class="bi bi-check-circle-fill"></i>Réservation simplifiée</li>
+              </ul>
+              <a href="https://wa.me/33753926876" class="btn btn-bird-secondary w-100">Demander</a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 reveal">
+            <div class="plan-card featured">
+              <span class="plan-badge">Populaire</span>
+              <h3 class="fw-bold">Pro diaspora</h3>
+              <p>Pour les clients qui envoient régulièrement des colis entre la France et la Guinée.</p>
+              <div class="plan-price">Sur devis <span>/ mois</span></div>
+              <ul class="plan-list">
+                <li><i class="bi bi-check-circle-fill"></i>Avantages sur envois réguliers</li>
+                <li><i class="bi bi-check-circle-fill"></i>Support prioritaire WhatsApp</li>
+                <li><i class="bi bi-check-circle-fill"></i>Suivi renforcé</li>
+                <li><i class="bi bi-check-circle-fill"></i>Notifications de statut</li>
+                <li><i class="bi bi-check-circle-fill"></i>Gestion multi-colis</li>
+              </ul>
+              <a href="https://wa.me/33753926876" class="btn btn-bird-primary w-100">Choisir cette formule</a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 reveal">
+            <div class="plan-card">
+              <span class="plan-badge">Entreprise</span>
+              <h3 class="fw-bold">Business Cargo</h3>
+              <p>Pour les commerçants, boutiques et professionnels avec des volumes plus importants.</p>
+              <div class="plan-price">Sur devis <span>/ mois</span></div>
+              <ul class="plan-list">
+                <li><i class="bi bi-check-circle-fill"></i>Gestion gros volumes</li>
+                <li><i class="bi bi-check-circle-fill"></i>Accompagnement personnalisé</li>
+                <li><i class="bi bi-check-circle-fill"></i>Fret aérien et maritime</li>
+                <li><i class="bi bi-check-circle-fill"></i>Suivi administratif</li>
+                <li><i class="bi bi-check-circle-fill"></i>Service adapté aux professionnels</li>
+              </ul>
+              <a href="https://wa.me/33753926876" class="btn btn-bird-secondary w-100">Demander un devis</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding soft-bg">
+      <div class="container">
+        <div class="section-title reveal">
+          <span class="section-kicker"><i class="bi bi-gem"></i>Avantages</span>
+          <h2>Pourquoi créer un espace abonnement ?</h2>
+          <p>Une page abonnement rassure les clients réguliers et donne une image plus organisée à l’entreprise.</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3 reveal">
+            <div class="benefit-card">
+              <span class="icon-box"><i class="bi bi-clock-history"></i></span>
+              <h3>Gain de temps</h3>
+              <p>Les clients réguliers retrouvent rapidement leurs demandes et informations.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 reveal">
+            <div class="benefit-card">
+              <span class="icon-box"><i class="bi bi-box-seam"></i></span>
+              <h3>Multi-colis</h3>
+              <p>Idéal pour les clients qui suivent plusieurs colis en même temps.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 reveal">
+            <div class="benefit-card">
+              <span class="icon-box"><i class="bi bi-headset"></i></span>
+              <h3>Support prioritaire</h3>
+              <p>Une meilleure prise en charge pour les clients actifs et professionnels.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 reveal">
+            <div class="benefit-card">
+              <span class="icon-box"><i class="bi bi-shield-check"></i></span>
+              <h3>Suivi clair</h3>
+              <p>Plus de transparence sur les envois, statuts, réservations et historiques.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding bg-blue-soft">
+      <div class="container">
+        <div class="section-title reveal">
+          <span class="section-kicker"><i class="bi bi-question-circle"></i>Questions fréquentes</span>
+          <h2>Avant de choisir une formule.</h2>
+          <p>Quelques réponses pour aider les clients à comprendre l’intérêt des abonnements.</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4 reveal">
+            <div class="faq-card">
+              <span class="icon-box"><i class="bi bi-credit-card"></i></span>
+              <h3>Les prix sont-ils fixes ?</h3>
+              <p>Non, les formules peuvent être proposées sur devis selon le volume, la fréquence et le type de service.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4 reveal">
+            <div class="faq-card">
+              <span class="icon-box"><i class="bi bi-person"></i></span>
+              <h3>Un particulier peut-il s’abonner ?</h3>
+              <p>Oui, surtout si le client envoie régulièrement des colis à sa famille ou ses proches.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4 reveal">
+            <div class="faq-card">
+              <span class="icon-box"><i class="bi bi-shop"></i></span>
+              <h3>Les commerçants sont-ils concernés ?</h3>
+              <p>Oui, la formule Business Cargo est pensée pour les boutiques, vendeurs et professionnels.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-5">
+      <div class="container">
+        <div class="cta reveal">
+          <div class="row align-items-center g-4">
+            <div class="col-lg-7">
+              <h2>Vous envoyez régulièrement des colis ?</h2>
+              <p>Contactez Bird Company pour définir une formule adaptée à votre fréquence d’envoi, votre volume et votre destination.</p>
+            </div>
+            <div class="col-lg-5">
+              <div class="cta-actions d-flex flex-column flex-sm-row flex-lg-column flex-xl-row gap-3 justify-content-lg-end">
+                <a href="https://wa.me/33753926876" class="btn btn-whatsapp">
+                  <i class="bi bi-whatsapp me-2"></i>WhatsApp
+                </a>
+                <a href="reservation.html" class="btn btn-bird-secondary">Réserver</a>
+                <a href="suivi-colis.html" class="btn btn-bird-primary">Suivre un colis</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <span class="brand-mark">B</span>
+            <h3 class="mb-0">BIRD COMPANY</h3>
+          </div>
+          <p class="lh-lg">
+            Transport, logistique et envoi de colis entre la Guinée, la France et l’international. Une solution fiable pour les particuliers, professionnels et la diaspora.
+          </p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-2">
+          <h4>Liens rapides</h4>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="suivi-colis.html">Suivi de colis</a></li>
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="reservation.html">Réservation</a></li>
+            <li><a href="abonnements.html">Mes abonnements</a></li>
+            <li><a href="boutique.html">Boutique</a></li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="index.html#services">Fret aérien Cargo</a></li>
+            <li><a href="index.html#services">Fret maritime</a></li>
+            <li><a href="index.html#services">Envoi express</a></li>
+            <li><a href="index.html#services">Enlèvement de colis</a></li>
+            <li><a href="index.html#services">Livraison à domicile</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3">
+          <h4>Contact</h4>
+          <ul>
+            <li>6 rue Maurice Paillard, 93430 Villetaneuse</li>
+            <li><a href="mailto:birdcompagny93@gmail.com">birdcompagny93@gmail.com</a></li>
+            <li><a href="tel:+33753926876">+33 7 53 92 68 76</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom d-flex flex-wrap justify-content-between gap-2">
+        <span>© 2026 Bird Company. Tous droits réservés.</span>
+        <span>Transport &amp; logistique Guinée ↔ France</span>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/33753926876" class="whatsapp-float" aria-label="Contacter Bird Company sur WhatsApp" target="_blank" rel="noopener">
+    <i class="bi bi-whatsapp"></i>
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const navbar = document.querySelector(".navbar");
+
+    function updateNavbar() {
+      if (window.scrollY > 10) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    }
+
+    updateNavbar();
+    window.addEventListener("scroll", updateNavbar);
+
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.14 }
+    );
+
+    revealElements.forEach((element) => revealObserver.observe(element));
+
+    const loginForm = document.querySelector(".login-card form");
+
+    if (loginForm) {
+      loginForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const submitButton = loginForm.querySelector("button[type='submit']");
+        const originalText = submitButton.innerHTML;
+
+        submitButton.innerHTML = '<i class="bi bi-check-circle me-2"></i>Accès simulé';
+        submitButton.classList.remove("btn-bird-primary");
+        submitButton.classList.add("btn-whatsapp");
+
+        setTimeout(() => {
+          submitButton.innerHTML = originalText;
+          submitButton.classList.remove("btn-whatsapp");
+          submitButton.classList.add("btn-bird-primary");
+        }, 2400);
+      });
+    }
+  </script>
+</body>
+</html>
