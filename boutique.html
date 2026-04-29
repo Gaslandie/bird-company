@@ -296,11 +296,12 @@
     .shop-hero {
       position: relative;
       overflow: hidden;
-      padding: 92px 0 110px;
+      padding: 86px 0 144px;
       background:
-        radial-gradient(circle at top left, rgba(247, 198, 0, 0.18), transparent 32%),
-        radial-gradient(circle at bottom right, rgba(0, 132, 61, 0.12), transparent 30%),
-        linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+        radial-gradient(circle at top left, rgba(247, 198, 0, 0.18), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(0, 132, 61, 0.28), transparent 32%),
+        linear-gradient(135deg, #111820 0%, #17202a 54%, #0f3323 100%);
+      color: #fff;
     }
 
     .shop-hero::before {
@@ -308,8 +309,8 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(23, 32, 42, 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(23, 32, 42, 0.035) 1px, transparent 1px);
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
       background-size: 44px 44px;
       mask-image: linear-gradient(to bottom, black, transparent 86%);
       pointer-events: none;
@@ -326,19 +327,19 @@
       gap: 8px;
       padding: 9px 15px;
       border-radius: 999px;
-      background: #fff;
-      border: 1px solid var(--bird-border);
-      color: var(--bird-muted);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: rgba(255, 255, 255, 0.76);
       font-weight: 700;
       font-size: 0.9rem;
       margin-bottom: 22px;
-      box-shadow: 0 10px 28px rgba(23, 32, 42, 0.05);
     }
 
-    .breadcrumb-soft a { color: var(--bird-green); }
+    .breadcrumb-soft a { color: #fff; }
 
     .shop-hero h1 {
-      font-size: clamp(2.5rem, 6vw, 5rem);
+      max-width: 720px;
+      font-size: clamp(2.45rem, 5.5vw, 4.9rem);
       line-height: 0.98;
       letter-spacing: -0.065em;
       font-weight: 900;
@@ -357,83 +358,180 @@
       right: 4px;
       bottom: 5px;
       height: 13px;
-      background: rgba(247, 198, 0, 0.55);
+      background: rgba(247, 198, 0, 0.72);
       z-index: -1;
       border-radius: 999px;
     }
 
     .shop-hero p {
-      max-width: 700px;
-      color: var(--bird-muted);
+      max-width: 620px;
+      color: rgba(255, 255, 255, 0.74);
       font-size: 1.13rem;
       line-height: 1.75;
       margin-bottom: 0;
     }
 
-    .hero-panel {
-      border-radius: 28px;
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 11px 15px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: rgba(255, 255, 255, 0.88);
+      font-weight: 700;
+    }
+
+    .hero-tag i { color: var(--bird-yellow); }
+
+    .shop-showcase {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .shop-product-card {
+      min-height: 204px;
+      border-radius: 18px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
+    }
+
+    .shop-product-card img {
+      width: 100%;
+      height: 122px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .shop-product-body {
+      padding: 14px;
+    }
+
+    .shop-product-body strong {
+      display: block;
+      color: #fff;
+      font-size: 1rem;
+      margin-bottom: 3px;
+    }
+
+    .shop-product-body span {
+      display: block;
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 0.88rem;
+      margin-bottom: 8px;
+    }
+
+    .shop-product-body b {
+      color: var(--bird-yellow);
+      font-size: 0.96rem;
+    }
+
+    .shop-search-section {
+      margin-top: -74px;
+      position: relative;
+      z-index: 6;
+    }
+
+    .shop-search-bar {
       background: #fff;
       border: 1px solid var(--bird-border);
+      border-radius: 18px;
       box-shadow: var(--shadow-soft);
-      padding: 26px;
-      overflow: hidden;
-      position: relative;
+      padding: 16px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto auto;
+      gap: 12px;
+      align-items: center;
     }
 
-    .hero-panel::before {
-      content: "";
-      position: absolute;
-      right: -70px;
-      top: -70px;
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      background: rgba(247, 198, 0, 0.28);
-    }
-
-    .hero-panel-inner {
-      position: relative;
-      z-index: 2;
-    }
-
-    .order-preview {
-      padding: 22px;
-      border-radius: 24px;
-      background: var(--bird-light);
-      border: 1px solid var(--bird-border);
-      margin-bottom: 16px;
-    }
-
-    .preview-row {
+    .shop-search-field {
       display: flex;
       align-items: center;
-      gap: 14px;
-      padding: 13px 0;
-      border-bottom: 1px solid var(--bird-border);
+      gap: 12px;
+      min-height: 46px;
+      padding: 0 16px;
+      border-radius: 14px;
+      background: var(--bird-light);
+      color: var(--bird-muted);
+      font-weight: 650;
     }
 
-    .preview-row:last-child { border-bottom: 0; }
+    .shop-search-field i {
+      color: #9ca3af;
+      font-size: 1.1rem;
+    }
 
-    .preview-row i {
-      width: 40px;
-      height: 40px;
-      border-radius: 14px;
+    .shop-search-field span {
+      min-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .shop-steps-strip {
+      padding: 32px 0 6px;
+    }
+
+    .mini-step {
+      height: 100%;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 20px;
+      border-radius: 8px;
+      background: #fff;
+      border: 1px solid var(--bird-border);
+      box-shadow: 0 8px 20px rgba(23, 32, 42, 0.04);
+    }
+
+    .mini-step-number {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: var(--bird-red);
+      color: #fff;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: #fff;
-      color: var(--bird-red);
+      font-weight: 900;
       flex-shrink: 0;
     }
 
-    .preview-row strong { display: block; }
-    .preview-row span {
+    .mini-step.pickup .mini-step-number {
+      background: var(--bird-yellow);
+      color: var(--bird-dark);
+    }
+
+    .mini-step.delivery .mini-step-number {
+      background: var(--bird-green);
+    }
+
+    .mini-step strong {
+      display: block;
+      margin-bottom: 4px;
+      font-weight: 850;
+    }
+
+    .mini-step span {
+      display: block;
       color: var(--bird-muted);
-      font-size: 0.9rem;
+      line-height: 1.45;
+      font-size: 0.92rem;
     }
 
     .shop-wrapper {
-      margin-top: -60px;
+      margin-top: 44px;
       position: relative;
       z-index: 5;
     }
@@ -788,8 +886,9 @@
     }
 
     @media (max-width: 991px) {
-      .shop-hero { padding: 72px 0 96px; }
-      .hero-panel { margin-top: 36px; }
+      .shop-hero { padding: 72px 0 126px; }
+      .shop-showcase { margin-top: 34px; }
+      .shop-search-section { margin-top: -64px; }
       .section-padding { padding: 72px 0; }
       .cta-section { padding-top: 56px; }
       .cta { padding: 42px 28px; }
@@ -798,7 +897,10 @@
     @media (max-width: 767px) {
       .topbar { display: none; }
       .shop-hero h1 { letter-spacing: -0.055em; }
-      .shop-wrapper { margin-top: -48px; }
+      .shop-showcase { grid-template-columns: 1fr; }
+      .shop-search-bar { grid-template-columns: 1fr; }
+      .shop-search-bar .btn { width: 100%; }
+      .shop-wrapper { margin-top: 38px; }
       .shop-form-card,
       .side-card,
       .category-card,
@@ -812,7 +914,9 @@
     }
 
     @media (max-width: 575px) {
-      .shop-hero { padding: 56px 0 82px; }
+      .shop-hero { padding: 56px 0 116px; }
+      .shop-product-card { min-height: auto; }
+      .shop-product-card img { height: 148px; }
       .section-padding { padding: 58px 0; }
       .cta-section { padding-top: 44px; }
       .cta { border-radius: 26px; }
@@ -928,85 +1032,117 @@
               <span>Boutique</span>
             </div>
 
-            <h1>Achetez en ligne, Bird Company s’occupe de la <span class="accent">réception et livraison</span></h1>
+            <h1>Vos achats en ligne, livrés avec <span class="accent">Bird Company</span></h1>
 
             <p>
-              La boutique Bird Company prépare un service simple pour accompagner les achats en ligne, la réception en France, l’expédition et la livraison en Guinée.
+              Envoyez le lien de votre article, indiquez votre destination et l’équipe vous accompagne pour la réception, l’expédition et la livraison entre la France, la Guinée et l’international.
             </p>
 
             <div class="d-flex flex-wrap gap-3 mt-4">
               <a href="#shopRequest" class="btn btn-bird-primary">
-                <i class="bi bi-bag-check me-2"></i>Demander un achat
+                <i class="bi bi-plus-lg me-2"></i>Publier ma demande
               </a>
-              <a href="https://wa.me/33753926876" class="btn btn-bird-secondary">
-                <i class="bi bi-whatsapp me-2"></i>Commander par WhatsApp
+              <a href="#categories" class="btn btn-bird-secondary">
+                <i class="bi bi-grid-1x2 me-2"></i>Voir les catégories
               </a>
+            </div>
+
+            <div class="hero-tags">
+              <span class="hero-tag"><i class="bi bi-shield-check"></i>Paiement à confirmer</span>
+              <span class="hero-tag"><i class="bi bi-box-seam"></i>Réception organisée</span>
+              <span class="hero-tag"><i class="bi bi-truck"></i>Livraison suivie</span>
             </div>
           </div>
 
           <div class="col-lg-6 reveal">
-            <div class="hero-panel">
-              <div class="hero-panel-inner">
-                <div class="order-preview">
-                  <div class="d-flex align-items-center gap-3 mb-3">
-                    <span class="brand-mark"><i class="bi bi-bag-check"></i></span>
-                    <div>
-                      <h2 class="h5 fw-bold mb-1">Service achat + expédition</h2>
-                      <p class="text-secondary mb-0">Un parcours clair pour acheter et recevoir en Guinée.</p>
-                    </div>
-                  </div>
-
-                  <div class="preview-row">
-                    <i class="bi bi-cart-check"></i>
-                    <div>
-                      <strong>Achat en ligne</strong>
-                      <span>Client ou équipe Bird selon le besoin.</span>
-                    </div>
-                  </div>
-
-                  <div class="preview-row">
-                    <i class="bi bi-box-seam"></i>
-                    <div>
-                      <strong>Réception en France</strong>
-                      <span>Vérification et préparation du colis.</span>
-                    </div>
-                  </div>
-
-                  <div class="preview-row">
-                    <i class="bi bi-airplane"></i>
-                    <div>
-                      <strong>Expédition vers la Guinée</strong>
-                      <span>Aérien, maritime ou express.</span>
-                    </div>
-                  </div>
-
-                  <div class="preview-row">
-                    <i class="bi bi-house-check"></i>
-                    <div>
-                      <strong>Livraison finale</strong>
-                      <span>Remise ou livraison locale selon disponibilité.</span>
-                    </div>
-                  </div>
+            <div class="shop-showcase">
+              <article class="shop-product-card">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=640&q=80" alt="Ordinateur portable et accessoires high-tech">
+                <div class="shop-product-body">
+                  <strong>High-tech</strong>
+                  <span>Téléphones, ordinateurs, accessoires</span>
+                  <b>Devis avant expédition</b>
                 </div>
+              </article>
 
-                <div class="row g-3">
-                  <div class="col-6">
-                    <div class="p-3 rounded-4 bg-white border">
-                      <strong class="d-block fs-4">Achat</strong>
-                      <span class="text-secondary">Assisté ou autonome</span>
-                    </div>
-                  </div>
-                  <div class="col-6">
-                    <div class="p-3 rounded-4 bg-white border">
-                      <strong class="d-block fs-4">Suivi</strong>
-                      <span class="text-secondary">Colis enregistré</span>
-                    </div>
-                  </div>
+              <article class="shop-product-card">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=640&q=80" alt="Chaussures de sport à expédier">
+                <div class="shop-product-body">
+                  <strong>Mode & chaussures</strong>
+                  <span>Tailles, couleurs et références</span>
+                  <b>Contrôle à réception</b>
+                </div>
+              </article>
+
+              <article class="shop-product-card">
+                <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=640&q=80" alt="Vêtements pliés pour une commande boutique">
+                <div class="shop-product-body">
+                  <strong>Vêtements</strong>
+                  <span>Achats personnels ou groupés</span>
+                  <b>Transport adapté</b>
+                </div>
+              </article>
+
+              <article class="shop-product-card">
+                <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=640&q=80" alt="Flacon de parfum pour achat accompagné">
+                <div class="shop-product-body">
+                  <strong>Beauté & maison</strong>
+                  <span>Petits articles et équipements</span>
+                  <b>Suivi conseillé</b>
+                </div>
+              </article>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="shop-search-section">
+      <div class="container">
+        <div class="shop-search-bar reveal">
+          <div class="shop-search-field">
+            <i class="bi bi-search"></i>
+            <span>Catégorie, lien produit, ville de livraison ou service souhaité</span>
+          </div>
+          <a href="#categories" class="btn btn-bird-secondary">
+            <i class="bi bi-sliders me-2"></i>Catégories
+          </a>
+          <a href="#shopRequest" class="btn btn-bird-primary">Lancer une demande</a>
+        </div>
+
+        <div class="shop-steps-strip">
+          <div class="row g-3">
+            <div class="col-md-4 reveal">
+              <div class="mini-step">
+                <span class="mini-step-number">1</span>
+                <div>
+                  <strong>Envoyez votre lien</strong>
+                  <span>Partagez la fiche produit, les options et votre ville de livraison.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 reveal delay-1">
+              <div class="mini-step pickup">
+                <span class="mini-step-number">2</span>
+                <div>
+                  <strong>Bird organise la réception</strong>
+                  <span>L’équipe confirme les détails, le transport et les informations utiles.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 reveal delay-2">
+              <div class="mini-step delivery">
+                <span class="mini-step-number">3</span>
+                <div>
+                  <strong>Expédition puis livraison</strong>
+                  <span>Votre achat est préparé, enregistré et remis selon la destination.</span>
                 </div>
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -1234,7 +1370,7 @@
       </div>
     </section>
 
-    <section class="section-padding section-dark">
+    <section id="categories" class="section-padding section-dark">
       <div class="container">
         <div class="section-title reveal">
           <span class="section-kicker"><i class="bi bi-grid-1x2"></i>Catégories possibles</span>
